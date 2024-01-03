@@ -6,23 +6,29 @@ const util = require('../../lib/util');
 module.exports = (sequelize, DataTypes) => {
   let fields = {
     id        : util.pk,
-    idEmpresa : {
+    idUsuario : {
+      type      : DataTypes.UUID,
+      allowNull : true,
+      xlabel    : lang.t('fields.idUsuario'),
+      field     : 'id_usuario'
+    },
+    idEmpresa: {
       type      : DataTypes.UUID,
       allowNull : false,
       xlabel    : lang.t('fields.idEmpresa'),
       field     : 'id_empresa'
     },
-    nombre: {
-      type      : DataTypes.STRING(500),
+    idRol: {
+      type      : DataTypes.UUID,
       allowNull : false,
-      xlabel    : lang.t('fields.nombre'),
-      field     : 'nombre'
+      xlabel    : lang.t('fields.idRol'),
+      field     : 'id_rol'
     },
-    descripcion: {
-      type      : DataTypes.TEXT,
+    cargo: {
+      type      : DataTypes.STRING(500),
       allowNull : true,
-      xlabel    : lang.t('fields.descripcion'),
-      field     : 'descripcion'
+      xlabel    : lang.t('fields.cargo'),
+      field     : 'cargo'
     },
     estado: {
       type         : DataTypes.ENUM,
@@ -36,11 +42,11 @@ module.exports = (sequelize, DataTypes) => {
   // Agregando campos para el log
   fields = util.setTimestamps(fields);
 
-  const Proyecto = sequelize.define('proyecto', fields, {
+  const UsuarioEmpresa = sequelize.define('usuario_empresa', fields, {
     paranoid   : true,
     timestamps : true,
-    tableName  : 'sys_proyecto'
+    tableName  : 'sys_usuario_empresa'
   });
 
-  return Proyecto;
+  return UsuarioEmpresa;
 };

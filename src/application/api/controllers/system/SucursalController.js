@@ -5,10 +5,17 @@ const { Respuesta } = require('../../../lib/respuesta');
 const { Finalizado, HttpCodes } = require('../../../lib/globals');
 
 module.exports = function setupEntidadController (services) {
-  const { SucursalService } = services;
+  const { SucursalService, PermisoService } = services;
 
   async function findAll (req, res) {
     try {
+      const tienePermiso = await PermisoService.verificarPermisos({
+        roles    : [req.user.idRol],
+        permisos : 'sucursales:listar:todo'
+      });
+
+      if (!tienePermiso) req.query.idEmpresa = req.user.idEmpresa;
+
       const respuesta = await SucursalService.findAll(req.query);
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
@@ -33,6 +40,8 @@ module.exports = function setupEntidadController (services) {
     try {
       const data = req.body;
 
+      data.idEmpresa = req.body?.idEmpresa || req.user.idEmpresa;
+
       data.userCreated = req.user.idUsuario;
 
       const respuesta = await SucursalService.createOrUpdate(data);
@@ -46,6 +55,7 @@ module.exports = function setupEntidadController (services) {
     try {
       const data = req.body;
       data.id = req.params.id;
+      data.idEmpresa = req.body?.idEmpresa || req.user.idEmpresa;
       data._user_updated = req.user.id;
 
       const respuesta = await SucursalService.createOrUpdate(data);

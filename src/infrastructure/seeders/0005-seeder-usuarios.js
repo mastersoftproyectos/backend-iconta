@@ -8,8 +8,6 @@ const bcrypt = require('bcrypt');
 let items = [
   {
     id                 : '7171272e-b31b-4c34-9220-9f535c958c5c',
-    id_entidad         : '745034da-06cb-4d98-8fee-4c982adfbb22',
-    id_empresa         : 'ee554d08-6dd4-4b2d-882c-3791d9dbef96',
     numero_documento   : '9248643',
     complemento        : '',
     tipo_documento     : 'CI',

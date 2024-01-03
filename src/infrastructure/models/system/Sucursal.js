@@ -5,8 +5,14 @@ const util = require('../../lib/util');
 
 module.exports = (sequelize, DataTypes) => {
   let fields = {
-    id             : util.pk,
-    numeroSucursal : {
+    id        : util.pk,
+    idEmpresa : {
+      type      : DataTypes.UUID,
+      allowNull : false,
+      xlabel    : lang.t('fields.idEmpresa'),
+      field     : 'id_empresa'
+    },
+    numeroSucursal: {
       type      : DataTypes.INTEGER,
       allowNull : false,
       xlabel    : lang.t('fields.numeroSucursal'),

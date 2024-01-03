@@ -58,7 +58,7 @@ module.exports = function userService (repositories, helpers, res) {
         return {
           id          : x.id,
           nombre      : x.nombre,
-          descripcion : x.descripcion,
+          descripcion : x.descripcion
           // ciudadano   : x.ciudadano,
           // admin       : x.admin
         }
@@ -153,16 +153,14 @@ module.exports = function userService (repositories, helpers, res) {
 
       const usuarioCreado = await UsuarioRepository.createOrUpdate(data, transaccion);
 
-      if (data.roles) {
-        if (data.roles.length === 0) throw new Error('Debe asignar al menos un rol al usuario');
+      if (data.idRol) {
         await RolUsuarioRepository.deleteItemCond({ idUsuario: usuarioCreado.id });
-        for (const rol of data.roles) {
-          await RolUsuarioRepository.createOrUpdate({
-            idUsuario   : usuarioCreado.id,
-            idRol       : rol,
-            userCreated : data.userCreated || data.userUpdated
-          }, transaccion);
-        }
+
+        await RolUsuarioRepository.createOrUpdate({
+          idUsuario   : usuarioCreado.id,
+          idRol       : data.idRol,
+          userCreated : data.userCreated || data.userUpdated
+        }, transaccion);
       }
 
       await transaction.commit(transaccion);

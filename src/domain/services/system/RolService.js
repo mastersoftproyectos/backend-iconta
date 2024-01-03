@@ -44,10 +44,6 @@ module.exports = function rolService (repositories, helpers, res) {
     try {
       const rol = await RolRepository.findOne(params);
 
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-      console.log(rol);
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-
       return rol;
     } catch (err) {
       throw new ErrorApp(err.message, 400);
@@ -70,9 +66,10 @@ module.exports = function rolService (repositories, helpers, res) {
     let rol;
     try {
       rol = await RolRepository.createOrUpdate(data);
-      if (data.menus) {
+      if (data.menu) {
         await RolMenuRepository.deleteItemCond({ idRol: rol.id });
-        for (const menu of data.menus) {
+
+        for (const menu of data.menu) {
           await RolMenuRepository.createOrUpdate({
             idRol       : rol.id,
             idMenu      : menu,

@@ -5,18 +5,8 @@ const util = require('../../lib/util');
 
 module.exports = (sequelize, DataTypes) => {
   let fields = {
-    id        : util.pk,
-    idEntidad : {
-      type   : DataTypes.UUID,
-      xlabel : lang.t('fields.idEntidad'),
-      field  : 'id_entidad'
-    },
-    idEmpresa: {
-      type   : DataTypes.UUID,
-      xlabel : lang.t('fields.idEmpresa'),
-      field  : 'id_empresa'
-    },
-    tipoDocumento: {
+    id            : util.pk,
+    tipoDocumento : {
       type   : DataTypes.STRING(15),
       xlabel : lang.t('fields.tipoDocumento'),
       field  : 'tipo_documento'
@@ -89,11 +79,17 @@ module.exports = (sequelize, DataTypes) => {
       xlabel    : lang.t('fields.cargo'),
       field     : 'cargo'
     },
-    foto: {
+    fotoPerfil: {
       type      : DataTypes.TEXT,
       allowNull : true,
-      xlabel    : lang.t('fields.foto'),
-      field     : 'foto'
+      xlabel    : lang.t('fields.fotoPerfil'),
+      field     : 'fotoPerfil'
+    },
+    direccion: {
+      type      : DataTypes.TEXT,
+      allowNull : true,
+      xlabel    : lang.t('fields.direccion'),
+      field     : 'direccion'
     },
     estado: {
       type         : DataTypes.ENUM,

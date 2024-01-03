@@ -6,7 +6,8 @@ const { Finalizado, HttpCodes } = require('../../../lib/globals');
 
 module.exports = function setupRolController (services) {
   const {
-    RolService
+    RolService,
+    PermisoService
   } = services;
 
   async function listar (req, res) {
@@ -62,8 +63,15 @@ module.exports = function setupRolController (services) {
   async function crear (req, res) {
     try {
       const data = req.body;
-      debug('creando rol');
       data.userCreated = req.user.idUsuario;
+
+      const tienePermiso = await PermisoService.verificarPermisos({
+        roles    : [req.user.idRol],
+        permisos : 'roles:listar:todo'
+      });
+
+      if (!tienePermiso) req.body.idEmpresa = req.user.idEmpresa;
+
       const respuesta = await RolService.createOrUpdate(data);
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
     } catch (error) {
@@ -73,7 +81,6 @@ module.exports = function setupRolController (services) {
 
   async function actualizar (req, res) {
     try {
-      debug('actualizando rol');
       const data = req.body;
       data.id = req.params.id;
       data.userUpdated = req.user.idUsuario;

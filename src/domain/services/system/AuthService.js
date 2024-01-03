@@ -25,33 +25,6 @@ module.exports = function authService (repositories, helpers, res) {
     return getResponse(existeUsuario, idRol);
   }
 
-  async function logout (code, usuario) {
-    debug('Salir del sistema');
-    let resultUrl;
-    const urlExit = '/statics/oauth/logout.html';
-    try {
-      const user = await UsuarioRepository.findOne({ usuario });
-      if (user) {
-        const parametros = {
-          state     : code,
-          idUsuario : user.id,
-          estado    : 'ACTIVO'
-        };
-        const result = await AuthRepository.findOne(parametros);
-        if (result) {
-          resultUrl = getUrl(result);
-        } else {
-          resultUrl = urlExit;
-        }
-      } else {
-        resultUrl = urlExit;
-      }
-      return res.success({ url: resultUrl });
-    } catch (e) {
-      return res.error(e);
-    }
-  }
-
   async function verificarPermisos (params) {
     try {
       const permisos = await PermisoRepository.verificarPermisos(params);
@@ -60,36 +33,36 @@ module.exports = function authService (repositories, helpers, res) {
     }
   }
 
-  async function getMenusRoles (roles) {
-    const idRoles = roles.map(x => x.id);
-
+  async function getMenusRoles (idRoles) {
     const { rows } = await MenuRepository.findByRoles(idRoles);
 
     return rows;
   }
 
-  async function getPermisos (roles) {
-    const idRoles = roles.map(x => x.id);
+  async function getPermisos (idRoles) {
     const { rows } = await PermisoRepository.findByRoles(idRoles);
+
     const permisos = {};
+
     for (const permiso of rows) {
       permisos[permiso.nombre] = true;
     }
+
     return permisos;
   }
 
-  async function getResponse (usuario) {
+  async function getResponse (usuario, idRolSeleccionado, idEmpresaSeleccionada) {
     try {
-      usuario.menu = await getMenusRoles(usuario.roles);
-      usuario.permisos = await getPermisos(usuario.roles);
+      usuario.menu = await getMenusRoles([idRolSeleccionado]);
+      usuario.permisos = await getPermisos([idRolSeleccionado]);
 
       usuario.token = await generateToken(ParametroRepository, {
-        idRoles           : usuario.roles.map(x => x.id),
+        idRoles           : idRolSeleccionado,
         idUsuario         : usuario.id,
+        idEmpresa         : idEmpresaSeleccionada,
         celular           : usuario.celular,
         correoElectronico : usuario.correoElectronico,
-        usuario           : usuario.usuario,
-        idEntidad         : usuario.entidad?.id
+        usuario           : usuario.usuario
       });
 
       return usuario;
@@ -98,7 +71,41 @@ module.exports = function authService (repositories, helpers, res) {
     }
   }
 
-  async function login (usuario, contrasena, request) {
+  async function login (datos, request) {
+    try {
+      const existeUsuario = await UsuarioRepository.findOne({ id: datos.idUsuario });
+
+      if (!existeUsuario) throw new Error('No existe el usuario.');
+
+      delete existeUsuario.contrasena;
+
+      const usuarioEmpresa = existeUsuario.usuarioEmpresa.find(x => x.idEmpresa === datos.idEmpresa && x.idRol === datos.idRol);
+
+      if (!usuarioEmpresa) throw new Error('Error al recuperar datos de su rol o empresa');
+
+      const respuesta = await getResponse(existeUsuario, usuarioEmpresa.idRol, usuarioEmpresa.idEmpresa);
+
+      respuesta.rol = usuarioEmpresa.rol;
+      respuesta.empresa = usuarioEmpresa.empresa;
+
+      await AuthRepository.deleteItemCond({ idUsuario: existeUsuario.id });
+
+      await AuthRepository.createOrUpdate({
+        ip          : request.ipInfo.ip,
+        navegador   : request.ipInfo.navigator,
+        userAgent   : request.headers['user-agent'],
+        token       : respuesta.token,
+        idUsuario   : existeUsuario.id,
+        idRol       : usuarioEmpresa.idRol,
+        userCreated : existeUsuario.id
+      });
+      return respuesta;
+    } catch (err) {
+      throw new ErrorApp(err.message, 400);
+    }
+  }
+
+  async function listarEmpresas (usuario, contrasena, request) {
     try {
       const existeUsuario = await UsuarioRepository.login({ usuario });
 
@@ -110,20 +117,8 @@ module.exports = function authService (repositories, helpers, res) {
 
       delete existeUsuario.contrasena;
 
-      const respuesta = await getResponse(existeUsuario);
+      const respuesta = await UsuarioRepository.findOne({ usuario });
 
-      await AuthRepository.deleteItemCond({ idUsuario: existeUsuario.id });
-
-      await AuthRepository.createOrUpdate({
-        ip          : request.ipInfo.ip,
-        navegador   : request.ipInfo.navigator,
-        userAgent   : request.headers['user-agent'],
-        token       : respuesta.token,
-        idUsuario   : existeUsuario.id,
-        idRol       : existeUsuario.roles.map(x => x.id).join(','),
-        idEntidad   : existeUsuario.entidad?.id,
-        userCreated : existeUsuario.id
-      });
       return respuesta;
     } catch (err) {
       throw new ErrorApp(err.message, 400);
@@ -186,6 +181,6 @@ module.exports = function authService (repositories, helpers, res) {
     verificarPermisos,
     login,
     refreshToken,
-    logout
+    listarEmpresas
   };
 };

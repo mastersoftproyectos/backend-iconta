@@ -19,7 +19,9 @@ module.exports = function associations (models) {
     Adjunto,
     Asignacion,
     Parrafo,
-    Certificacion
+    Certificacion,
+    UsuarioEmpresa,
+    Empresa
   } = models;
 
   auth.belongsTo(usuario, { foreignKey: { name: 'idUsuario' }, as: 'usuario' });
@@ -74,6 +76,15 @@ module.exports = function associations (models) {
 
   usuario.belongsToMany(Solicitud,  { through: { model: Asignacion, unique: false }, as: 'solicitudes', foreignKey: 'idUsuario' });
   Solicitud.belongsToMany(usuario, { through: { model: Asignacion, unique: false }, as: 'usuarios', foreignKey: 'idSolicitud' });
+
+  UsuarioEmpresa.belongsTo(usuario,  { foreignKey: 'idUsuario', as: 'usuario' });
+  usuario.hasMany(UsuarioEmpresa, { foreignKey: 'idUsuario', as: 'usuarioEmpresa' });
+
+  UsuarioEmpresa.belongsTo(rol,  { foreignKey: 'idRol', as: 'rol' });
+  rol.hasMany(UsuarioEmpresa, { foreignKey: 'idRol', as: 'rolEmpresa' });
+
+  UsuarioEmpresa.belongsTo(Empresa,  { foreignKey: 'idEmpresa', as: 'empresa' });
+  Empresa.hasMany(UsuarioEmpresa, { foreignKey: 'idEmpresa', as: 'empresaEmpresa' });
 
   return models;
 };

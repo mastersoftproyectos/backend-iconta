@@ -6,7 +6,7 @@ const Repository = require('../Repository');
 
 module.exports = function usuariosRepository (models, Sequelize) {
   const Op = Sequelize.Op;
-  const { usuario, rol, entidad, menu } = models;
+  const { usuario, rol, entidad, UsuarioEmpresa, Empresa } = models;
 
   async function findAll (params = {}) {
     const query = getQuery(params);
@@ -14,7 +14,7 @@ module.exports = function usuariosRepository (models, Sequelize) {
       'celular',
       'correoElectronico',
       'estado',
-      'foto',
+      'fotoPerfil',
       'id',
       'nombres',
       'cargo',
@@ -134,7 +134,7 @@ module.exports = function usuariosRepository (models, Sequelize) {
       'cargo',
       'celular',
       'correoElectronico',
-      'foto',
+      'fotoPerfil',
       'estado'
     ];
 
@@ -142,22 +142,43 @@ module.exports = function usuariosRepository (models, Sequelize) {
 
     query.include = [
       {
-        attributes : ['id', 'nombre', 'sigla', 'nivel', 'idEntidad'],
-        model      : entidad,
-        as         : 'entidad'
-      },
-      {
-        required   : true,
-        through    : { attributes: [] },
-        attributes : [
+        attributes: [
           'id',
-          'idEntidad',
-          'nombre',
-          'descripcion',
+          'idUsuario',
+          'idEmpresa',
+          'idRol',
+          'cargo',
           'estado'
         ],
-        model : rol,
-        as    : 'roles'
+        model   : UsuarioEmpresa,
+        as      : 'usuarioEmpresa',
+        include : [
+          {
+            attributes: [
+              'id',
+              'idEmpresa',
+              'nombre',
+              'descripcion',
+              'estado'
+            ],
+            model : rol,
+            as    : 'rol'
+          },
+          {
+            attributes: [
+              'id',
+              'nit',
+              'nombre',
+              'logo',
+              'correoElectronico',
+              'configuracion',
+              'codigoVerificacion',
+              'estado'
+            ],
+            model : Empresa,
+            as    : 'empresa'
+          }
+        ]
       }
     ];
 
@@ -214,8 +235,7 @@ module.exports = function usuariosRepository (models, Sequelize) {
       'telefono',
       'celular',
       'correoElectronico',
-      'idEmpresa',
-      'foto',
+      'fotoPerfil',
       'estado'
     ];
 

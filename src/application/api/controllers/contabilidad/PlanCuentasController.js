@@ -4,12 +4,12 @@ const debug = require('debug')('app:controller:REPORTE');
 const { Respuesta } = require('../../../lib/respuesta');
 const { Finalizado, HttpCodes } = require('../../../lib/globals');
 
-module.exports = function setupEntidadController (services) {
-  const { ProyectoService } = services;
+module.exports = function setupPlanCuentasController (services) {
+  const { PlanCuentasService } = services;
 
   async function findAll (req, res) {
     try {
-      const respuesta = await ProyectoService.findAll(req.query);
+      const respuesta = await PlanCuentasService.findAll(req.query);
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
     } catch (error) {
@@ -21,7 +21,7 @@ module.exports = function setupEntidadController (services) {
     try {
       const data = { id: req.params.id };
 
-      const respuesta = await ProyectoService.findOne(data);
+      const respuesta = await PlanCuentasService.findOne(data);
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
     } catch (error) {
@@ -32,12 +32,10 @@ module.exports = function setupEntidadController (services) {
   async function create (req, res) {
     try {
       const data = req.body;
-
-      data.idEmpresa = req.body?.idEmpresa || req.user.idEmpresa;
-
+      data.idEmpresa = req.user.idEmpresa;
       data.userCreated = req.user.idUsuario;
 
-      const respuesta = await ProyectoService.createOrUpdate(data);
+      const respuesta = await PlanCuentasService.createOrUpdate(data);
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
     } catch (error) {
       return res.status(error.httpCode || HttpCodes.userError).json(new Respuesta(error.message, Finalizado.FAIL));
@@ -48,10 +46,9 @@ module.exports = function setupEntidadController (services) {
     try {
       const data = req.body;
       data.id = req.params.id;
-      data.idEmpresa = req.body?.idEmpresa || req.user.idEmpresa;
-      data.userUpdated = req.user.id;
+      data._user_updated = req.user.id;
 
-      const respuesta = await ProyectoService.createOrUpdate(data);
+      const respuesta = await PlanCuentasService.createOrUpdate(data);
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
     } catch (error) {
@@ -63,7 +60,7 @@ module.exports = function setupEntidadController (services) {
     try {
       const { id } = req.params;
 
-      const respuesta = await ProyectoService.deleteItem(id);
+      const respuesta = await PlanCuentasService.deleteItem(id);
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
     } catch (error) {

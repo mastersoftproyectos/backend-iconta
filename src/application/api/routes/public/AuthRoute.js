@@ -10,6 +10,8 @@ module.exports = function setupAuth (api, controllers, middlewares) {
 
   api.post('/login', AuthController.login);
 
+  api.post('/listar-empresas', AuthController.listarEmpresas);
+
   api.get('/status', (req, res, next) => {
     const date = new Date();
 

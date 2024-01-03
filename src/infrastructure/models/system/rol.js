@@ -6,11 +6,11 @@ const util = require('../../lib/util');
 module.exports = (sequelize, DataTypes) => {
   let fields = {
     id        : util.pk,
-    idEntidad : {
+    idEmpresa : {
       type      : DataTypes.UUID,
       allowNull : false,
-      xlabel    : lang.t('fields.idEntidad'),
-      field     : 'id_entidad'
+      xlabel    : lang.t('fields.idEmpresa'),
+      field     : 'id_empresa'
     },
     nombre: {
       type      : DataTypes.STRING(50),
