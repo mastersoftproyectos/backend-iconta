@@ -196,11 +196,6 @@ module.exports = function usuariosRepository (models, Sequelize) {
 
     query.include = [
       {
-        attributes : ['id', 'nombre', 'sigla', 'nivel', 'idEntidad'],
-        model      : entidad,
-        as         : 'entidad'
-      },
-      {
         required   : true,
         through    : { attributes: [] },
         attributes : [
@@ -240,27 +235,6 @@ module.exports = function usuariosRepository (models, Sequelize) {
     ];
 
     query.where = params;
-
-    query.include = [
-      {
-        attributes : ['id', 'nombre', 'sigla', 'nivel', 'idEntidad'],
-        model      : entidad,
-        as         : 'entidad'
-      },
-      {
-        required   : true,
-        through    : { attributes: [] },
-        attributes : [
-          'id',
-          'idEntidad',
-          'nombre',
-          'descripcion',
-          'estado'
-        ],
-        model : rol,
-        as    : 'roles'
-      }
-    ];
 
     const result = await usuario.findOne(query);
 

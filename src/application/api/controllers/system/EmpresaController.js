@@ -82,7 +82,7 @@ module.exports = function setupEntidadController (services) {
 
       const respuesta = await EmpresaService.registrarEmpresa(data);
 
-      const correoEnviado = await enviar({
+      await enviar({
         para    : data.correoElectronico,
         titulo  : 'Codigo de verificacion',
         mensaje : `Su codigo de verificacion es: ${data.codigoVerificacion}`,

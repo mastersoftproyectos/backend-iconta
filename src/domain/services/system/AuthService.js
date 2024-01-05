@@ -14,6 +14,7 @@ module.exports = function authService (repositories, helpers, res) {
     MenuRepository,
     PermisoRepository,
     EmpresaRepository,
+    UsuarioEmpresaRepository,
     transaction
   } = repositories;
 
@@ -121,6 +122,9 @@ module.exports = function authService (repositories, helpers, res) {
 
       return respuesta;
     } catch (err) {
+      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
+      console.log(err);
+      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
       throw new ErrorApp(err.message, 400);
     }
   }
@@ -134,21 +138,26 @@ module.exports = function authService (repositories, helpers, res) {
 
       if (!empresa) throw new Error('El codigo no es correcto o ya fue usado.');
 
-      const usuario = await UsuarioRepository.findOne({ idEmpresa: empresa.id });
+      const usuarioEmpresa = await UsuarioEmpresaRepository.findOne({ idEmpresa: empresa.id });
 
-      if (!usuario) throw new Error('El registro de la empresa no se realizo de forma correct');
+      const usuario = await UsuarioRepository.findOne({ id: usuarioEmpresa.idUsuario });
+
+      if (!usuario) throw new Error('Error al intentar activar la cuenta, no se puede recuperar datos de la empresa');
 
       await EmpresaRepository.createOrUpdate({ id: empresa.id, codigoVerificacion: null, estado: 'ACTIVO', userUpdated }, transaccion);
 
       await UsuarioRepository.createOrUpdate({ id: usuario.id, estado: 'ACTIVO', userUpdated }, transaccion);
 
-      const existeUsuario = await UsuarioRepository.login({ usuario: usuario.usuario });
+      const existeUsuario = await UsuarioRepository.findOne({ id: usuario.id });
 
       delete existeUsuario.contrasena;
 
-      const respuesta = await  getResponse(existeUsuario);
+      const respuesta = await  getResponse(existeUsuario, usuarioEmpresa.idRol, usuarioEmpresa.idEmpresa);
 
-      await AuthRepository.deleteItemCond({ idUsuario: existeUsuario.id }, transaccion);
+      respuesta.rol = usuarioEmpresa.rol;
+      respuesta.empresa = usuarioEmpresa.empresa;
+
+      await AuthRepository.deleteItemCond({ idUsuario: existeUsuario.id });
 
       await AuthRepository.createOrUpdate({
         ip          : request.ipInfo.ip,
@@ -156,10 +165,9 @@ module.exports = function authService (repositories, helpers, res) {
         userAgent   : request.headers['user-agent'],
         token       : respuesta.token,
         idUsuario   : existeUsuario.id,
-        idRol       : existeUsuario.roles.map(x => x.id).join(','),
-        idEntidad   : existeUsuario.entidad?.id,
+        idRol       : usuarioEmpresa.idRol,
         userCreated : existeUsuario.id
-      }, transaccion);
+      });
 
       await transaction.commit(transaccion);
       return respuesta;

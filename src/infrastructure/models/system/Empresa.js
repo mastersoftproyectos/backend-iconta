@@ -28,7 +28,6 @@ module.exports = (sequelize, DataTypes) => {
     correoElectronico: {
       type      : DataTypes.STRING(100),
       allowNull : false,
-      unique    : true,
       xlabel    : lang.t('fields.correoElectronico'),
       field     : 'correo_electronico'
     },

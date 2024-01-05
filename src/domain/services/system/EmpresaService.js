@@ -5,7 +5,12 @@ const { ID_ROL_ADMIN_EMPRESA, ID_USUARIO_ADMIN } = require('../../../common/conf
 const { ErrorApp } = require('../../lib/error');
 
 module.exports = function empresaService (repositories, helpers, res) {
-  const { EmpresaRepository, UsuarioRepository, AuthRepository, RolUsuarioRepository, transaction } = repositories;
+  const {
+    EmpresaRepository, UsuarioRepository, AuthRepository, RolUsuarioRepository,
+    SucursalRepository,
+    UsuarioEmpresaRepository,
+    transaction
+  } = repositories;
 
   async function findAll (params) {
     try {
@@ -50,15 +55,7 @@ module.exports = function empresaService (repositories, helpers, res) {
   async function registrarEmpresa (data) {
     let transaccion;
     try {
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-      console.log(data);
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-
       transaccion = await transaction.create();
-
-      const existeCorreoElectronico = await EmpresaRepository.findOne({ correoElectronico: data.correoElectronico });
-
-      if (existeCorreoElectronico) throw new Error(`Ya fue registrado el correo electronico: ${data.correoElectronico}`);
 
       const existeNit = await EmpresaRepository.findOne({ nit: data.nit });
 
@@ -66,24 +63,39 @@ module.exports = function empresaService (repositories, helpers, res) {
 
       const empresaCreada = await EmpresaRepository.createOrUpdate(data, transaccion);
 
-      const contrasena = await AuthRepository.codificarContrasena(data.contrasena);
-
-      const usuarioCreado = await UsuarioRepository.createOrUpdate({
+      await SucursalRepository.createOrUpdate({
         idEmpresa         : empresaCreada.id,
-        tipoDocumento     : 'CI',
-        numeroDocumento   : data.nit,
-        usuario           : data.correoElectronico,
-        contrasena,
-        cargo             : 'GERENTE DE LA EMPRESA',
-        nombres           : data.nombre,
-        primerApellido    : '-',
-        segundoApellido   : '-',
+        numeroSucursal    : 1,
+        nombre            : 'CASA MATRIZ',
+        descripcion       : 'CASA MATRIZ',
         correoElectronico : data.correoElectronico,
-        userCreated       : ID_USUARIO_ADMIN
+        fiscal            : true,
+        estado            : 'ACTIVO'
       }, transaccion);
 
-      await RolUsuarioRepository.createOrUpdate({
-        idUsuario   : usuarioCreado.id,
+      const contrasena = await AuthRepository.codificarContrasena(data.contrasena);
+
+      let existeUsuario = await UsuarioRepository.findOne({ usuario: data.correoElectronico });
+
+      if (!existeUsuario) {
+        existeUsuario = await UsuarioRepository.createOrUpdate({
+          idEmpresa         : empresaCreada.id,
+          tipoDocumento     : 'CI',
+          numeroDocumento   : data.nit,
+          usuario           : data.correoElectronico,
+          contrasena,
+          cargo             : 'GERENTE DE LA EMPRESA',
+          nombres           : data.nombre,
+          primerApellido    : '-',
+          segundoApellido   : '-',
+          correoElectronico : data.correoElectronico,
+          userCreated       : ID_USUARIO_ADMIN
+        }, transaccion);
+      }
+
+      await UsuarioEmpresaRepository.createOrUpdate({
+        idEmpresa   : empresaCreada.id,
+        idUsuario   : existeUsuario.id,
         idRol       : ID_ROL_ADMIN_EMPRESA,
         userCreated : ID_USUARIO_ADMIN
       }, transaccion);
