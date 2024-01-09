@@ -12,7 +12,13 @@ module.exports = function setupRolController (services) {
 
   async function listar (req, res) {
     try {
-      debug('Recuperando roles');
+      const tienePermiso = await PermisoService.verificarPermisos({
+        roles    : [req.user.idRol],
+        permisos : 'rol:listar:todo'
+      });
+
+      if (!tienePermiso) req.query.idEmpresa = req.user.idEmpresa;
+
       const respuesta = await RolService.findAll(req.query);
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
     } catch (error) {

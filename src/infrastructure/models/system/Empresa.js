@@ -13,11 +13,46 @@ module.exports = (sequelize, DataTypes) => {
       xlabel    : lang.t('fields.nit'),
       field     : 'nit'
     },
-    nombre: {
+    nombreFiscal: {
+      type      : DataTypes.STRING(200),
+      allowNull : true,
+      xlabel    : lang.t('fields.nombreFiscal'),
+      field     : 'nombre_fiscal'
+    },
+    nombreComercial: {
       type      : DataTypes.STRING(200),
       allowNull : false,
-      xlabel    : lang.t('fields.nombre'),
-      field     : 'nombre'
+      xlabel    : lang.t('fields.nombreComercial'),
+      field     : 'nombre_comercial'
+    },
+    unipersonal: {
+      type         : DataTypes.BOOLEAN,
+      allowNull    : true,
+      defaultValue : false,
+      xlabel       : lang.t('fields.unipersonal'),
+      field        : 'unipersonal'
+    },
+    periodoFiscalInicio: {
+      type         : DataTypes.ENUM,
+      values       : ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
+      defaultValue : 'ENERO',
+      allowNull    : true,
+      xlabel       : lang.t('fields.periodoFiscalInicio'),
+      field        : 'periodo_fiscal_inicio'
+    },
+    periodoFiscalFin: {
+      type         : DataTypes.ENUM,
+      values       : ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
+      defaultValue : 'DICIEMBRE',
+      allowNull    : true,
+      xlabel       : lang.t('fields.periodoFiscalFin'),
+      field        : 'periodo_fiscal_fin'
+    },
+    direccionCasaMatriz: {
+      type      : DataTypes.TEXT,
+      allowNull : true,
+      xlabel    : lang.t('fields.direccionCasaMatriz'),
+      field     : 'direccion_casa_matriz'
     },
     logo: {
       type      : DataTypes.STRING(500),
@@ -32,7 +67,38 @@ module.exports = (sequelize, DataTypes) => {
       field     : 'correo_electronico'
     },
     configuracion: {
-      type      : DataTypes.JSONB,
+      type         : DataTypes.JSONB,
+      defaultValue : {
+        planCuentas: {
+          nroDigitos: 2
+        },
+        comprobantes: {
+          numeroDocumento          : '',
+          nombre                   : '',
+          minGlosa                 : 100,
+          tipoCorrelativo          : 'SUCURSAL',
+          mayusculas               : false,
+          copiarGlosaEspecifica    : false,
+          copiarGlosaSuperior      : false,
+          copiarReferenciaSuperior : false
+        },
+        impresionComprobantes: {
+          logoEmpresa              : true,
+          direccionEmpresa         : true,
+          literalMonedaAlternativa : false,
+          tipoMoneda               : 'Bs',
+          pieFirmaUno              : '',
+          pieFirmaDos              : '',
+          pieFirmaTres             : '',
+          pieFirmaCuatro           : '',
+          pieFirmaCinco            : ''
+        },
+        tributo: {
+          iva : 3,
+          it  : 13,
+          iue : 25
+        }
+      },
       allowNull : true,
       xlabel    : lang.t('fields.configuracion'),
       field     : 'configuracion'

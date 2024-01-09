@@ -122,9 +122,6 @@ module.exports = function authService (repositories, helpers, res) {
 
       return respuesta;
     } catch (err) {
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-      console.log(err);
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
       throw new ErrorApp(err.message, 400);
     }
   }

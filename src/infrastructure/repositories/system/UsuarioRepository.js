@@ -168,7 +168,7 @@ module.exports = function usuariosRepository (models, Sequelize) {
             attributes: [
               'id',
               'nit',
-              'nombre',
+              'nombreComercial',
               'logo',
               'correoElectronico',
               'configuracion',

@@ -15,7 +15,7 @@ let items = [
   { id: '28b003ef-4000-4733-9477-acd7059d9725', nombre: 'Interoperabilidad', ruta: 'interoperabilidad', icono: 'settings', orden: 6, id_menu: '6190597f-7fa6-4c39-bcc9-7a1441ba566a', estado: 'ACTIVO'  },
 
   { id: '649ee489-59f3-4d21-89e6-142960b9bb54', nombre: 'Comprobante', ruta: 'comprobantes', icono: 'settings', orden: 6, id_menu: '61d6d53b-ac65-41ac-bc54-3228f548f40a', estado: 'ACTIVO'  },
-  { id: '303a4ca5-fb48-415c-9b31-b28de46cc604', nombre: 'Plantillas', ruta: 'plantilals', icono: 'settings', orden: 6, id_menu: '61d6d53b-ac65-41ac-bc54-3228f548f40a', estado: 'ACTIVO'  },
+  { id: '303a4ca5-fb48-415c-9b31-b28de46cc604', nombre: 'Plantillas', ruta: 'plantillas', icono: 'settings', orden: 6, id_menu: '61d6d53b-ac65-41ac-bc54-3228f548f40a', estado: 'ACTIVO'  },
 
   { id: 'ddf49a43-103e-45ea-b7c4-fd7587824a50', nombre: 'Registro diario', ruta: 'registro-diario', icono: 'settings', orden: 6, id_menu: 'ef6b99d0-0834-4d1e-86b0-207111744f98', estado: 'ACTIVO'  },
   { id: '082c0dd5-189d-4861-b457-f4d0c3a925b1', nombre: 'Libro diario', ruta: 'libro-diario', icono: 'settings', orden: 6, id_menu: 'ef6b99d0-0834-4d1e-86b0-207111744f98', estado: 'ACTIVO'  },

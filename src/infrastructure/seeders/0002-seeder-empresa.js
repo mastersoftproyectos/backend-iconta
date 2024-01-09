@@ -3,8 +3,8 @@
 const { setTimestampsSeeder } = require('../lib/util');
 
 let items = [
-  { id: 'ee554d08-6dd4-4b2d-882c-3791d9dbef96', nit: '924864302',  nombre: 'MasterSoft', correo_electronico: 'mastersoft.proyectos@gmail.com', configuracion: null, estado: 'ACTIVO' },
-  { id: 'ee5d3f27-107e-4863-9d07-6a086c8ed11a', nit: '9248643012',  nombre: 'SAMEQ', correo_electronico: 'sameq@gmail.com', configuracion: null, estado: 'ACTIVO' }
+  { id: 'ee554d08-6dd4-4b2d-882c-3791d9dbef96', nit: '924864302',  nombre_comercial: 'MasterSoft', correo_electronico: 'mastersoft.proyectos@gmail.com', estado: 'ACTIVO' },
+  { id: 'ee5d3f27-107e-4863-9d07-6a086c8ed11a', nit: '9248643012',  nombre_comercial: 'SAMEQ', correo_electronico: 'sameq@gmail.com', estado: 'ACTIVO' }
 ];
 
 // Asignando datos de log y timestamps a los datos

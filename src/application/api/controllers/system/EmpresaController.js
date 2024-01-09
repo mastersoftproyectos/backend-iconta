@@ -9,10 +9,17 @@ const uuid = require('uuid');
 const { frontendUrl } = require('../../../../common/config/app');
 
 module.exports = function setupEntidadController (services) {
-  const { EmpresaService, AuthService } = services;
+  const { EmpresaService, AuthService, PermisoService } = services;
 
   async function findAll (req, res) {
     try {
+      const tienePermiso = await PermisoService.verificarPermisos({
+        roles    : [req.user.idRol],
+        permisos : 'empresa:listar:todo'
+      });
+
+      if (!tienePermiso) req.query.idUsuario = req.user.idUsuario;
+
       const respuesta = await EmpresaService.findAll(req.query);
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
