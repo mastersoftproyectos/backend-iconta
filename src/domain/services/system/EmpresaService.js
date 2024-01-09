@@ -85,7 +85,7 @@ module.exports = function empresaService (repositories, helpers, res) {
           usuario           : data.correoElectronico,
           contrasena,
           cargo             : 'GERENTE DE LA EMPRESA',
-          nombres           : data.nombre,
+          nombres           : data.nombreComercial,
           primerApellido    : '-',
           segundoApellido   : '-',
           correoElectronico : data.correoElectronico,
