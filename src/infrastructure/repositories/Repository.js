@@ -9,15 +9,14 @@ async function createOrUpdate (object, model, t) {
     }
   };
 
+  if (t)  cond.transaction = t;
+
   const item = await model.findOne(cond);
 
   if (item) {
     object.updatedAt = new Date();
     let updated;
     try {
-      if (t) {
-        cond.transaction = t;
-      }
       delete object.createdAt;
       delete object.userCreated;
 

@@ -12,6 +12,8 @@ module.exports = function ParametroRepository (models, Sequelize) {
 
     query.where = {};
 
+    if (params.idEmpresa) query.where.idEmpresa = params.idEmpresa;
+
     const result = await Proyecto.findAndCountAll(query);
 
     return toJSON(result);

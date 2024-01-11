@@ -68,40 +68,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     configuracion: {
       type         : DataTypes.JSONB,
-      defaultValue : {
-        planCuentas: {
-          nroDigitos: 2
-        },
-        comprobantes: {
-          numeroDocumento          : '',
-          nombre                   : '',
-          minGlosa                 : 100,
-          tipoCorrelativo          : 'SUCURSAL',
-          mayusculas               : false,
-          copiarGlosaEspecifica    : false,
-          copiarGlosaSuperior      : false,
-          copiarReferenciaSuperior : false
-        },
-        impresionComprobantes: {
-          logoEmpresa              : true,
-          direccionEmpresa         : true,
-          literalMonedaAlternativa : false,
-          tipoMoneda               : 'Bs',
-          pieFirmaUno              : '',
-          pieFirmaDos              : '',
-          pieFirmaTres             : '',
-          pieFirmaCuatro           : '',
-          pieFirmaCinco            : ''
-        },
-        tributo: {
-          iva : 3,
-          it  : 13,
-          iue : 25
-        }
-      },
-      allowNull : true,
-      xlabel    : lang.t('fields.configuracion'),
-      field     : 'configuracion'
+      defaultValue : {},
+      allowNull    : true,
+      xlabel       : lang.t('fields.configuracion'),
+      field        : 'configuracion'
     },
     codigoVerificacion: {
       type      : DataTypes.STRING(200),

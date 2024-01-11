@@ -4,7 +4,7 @@ const { getQuery, toJSON } = require('../../lib/util');
 const Repository = require('../Repository');
 
 module.exports = function UsuarioEmpresaRepository (models, Sequelize) {
-  const { UsuarioEmpresa } = models;
+  const { UsuarioEmpresa, Empresa, rol } = models;
   const Op = Sequelize.Op;
 
   async function findAll (params = {}) {
@@ -17,9 +17,31 @@ module.exports = function UsuarioEmpresaRepository (models, Sequelize) {
     return toJSON(result);
   }
 
+  async function findOne (params = {}) {
+    const query = {};
+    query.where = params;
+
+    query.include = [
+      {
+        model : Empresa,
+        as    : 'empresa'
+      },
+      {
+        model : rol,
+        as    : 'rol'
+      }
+    ];
+
+    const result = await UsuarioEmpresa.findOne(query);
+
+    if (result) return result.toJSON();
+
+    return null;
+  }
+
   return {
     findAll,
-    findOne        : params => Repository.findOne(params, UsuarioEmpresa),
+    findOne,
     findById       : (id) => Repository.findById(id, UsuarioEmpresa),
     createOrUpdate : (item, t) => Repository.createOrUpdate(item, UsuarioEmpresa, t),
     deleteItem     : (id, t) => Repository.deleteItem(id, UsuarioEmpresa, t)

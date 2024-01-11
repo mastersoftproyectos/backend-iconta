@@ -120,6 +120,8 @@ module.exports = function authService (repositories, helpers, res) {
 
       const respuesta = await UsuarioRepository.findOne({ usuario });
 
+      respuesta.usuarioEmpresa = respuesta.usuarioEmpresa.filter(usuarioEmpresa => usuarioEmpresa?.empresa?.estado === 'ACTIVO');
+
       return respuesta;
     } catch (err) {
       throw new ErrorApp(err.message, 400);
@@ -152,6 +154,7 @@ module.exports = function authService (repositories, helpers, res) {
       const respuesta = await  getResponse(existeUsuario, usuarioEmpresa.idRol, usuarioEmpresa.idEmpresa);
 
       respuesta.rol = usuarioEmpresa.rol;
+
       respuesta.empresa = usuarioEmpresa.empresa;
 
       await AuthRepository.deleteItemCond({ idUsuario: existeUsuario.id });

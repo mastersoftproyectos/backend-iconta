@@ -183,9 +183,9 @@ module.exports = function usuariosRepository (models, Sequelize) {
     ];
 
     const result = await usuario.findOne(query);
-    if (result) {
-      return result.toJSON();
-    }
+
+    if (result) return result.toJSON();
+
     return null;
   }
 

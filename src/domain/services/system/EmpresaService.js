@@ -1,7 +1,7 @@
 'use strict';
 
 const debug = require('debug')('app:service:auth');
-const { ID_ROL_ADMIN_EMPRESA, ID_USUARIO_ADMIN } = require('../../../common/config/constants');
+const { ID_ROL_ADMIN_EMPRESA, ID_USUARIO_ADMIN, CONFIGURACION_EMPRESA_DEFECTO } = require('../../../common/config/constants');
 const { ErrorApp } = require('../../lib/error');
 
 module.exports = function empresaService (repositories, helpers, res) {
@@ -9,6 +9,7 @@ module.exports = function empresaService (repositories, helpers, res) {
     EmpresaRepository, UsuarioRepository, AuthRepository, RolUsuarioRepository,
     SucursalRepository,
     UsuarioEmpresaRepository,
+    ProyectoRepository,
     transaction
   } = repositories;
 
@@ -62,6 +63,22 @@ module.exports = function empresaService (repositories, helpers, res) {
       if (existeNit) throw new Error(`Ya fue registrado el nit: ${data.nit}`);
 
       const empresaCreada = await EmpresaRepository.createOrUpdate(data, transaccion);
+
+      const proyectoCreado = await ProyectoRepository.createOrUpdate({
+        idEmpresa   : empresaCreada.id,
+        nombre      : 'GENERAL',
+        descripcion : 'Proyecto general'
+      }, transaccion);
+
+      const nuevaConfiguracion = JSON.parse(JSON.stringify(CONFIGURACION_EMPRESA_DEFECTO));
+
+      nuevaConfiguracion.comprobantes.idProyecto = proyectoCreado.id;
+
+      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
+      console.log(empresaCreada.id, nuevaConfiguracion);
+      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
+
+      await EmpresaRepository.createOrUpdate({ id: empresaCreada.id, configuracion: nuevaConfiguracion }, transaccion);
 
       await SucursalRepository.createOrUpdate({
         idEmpresa         : empresaCreada.id,
