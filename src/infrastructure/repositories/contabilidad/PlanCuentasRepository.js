@@ -3,7 +3,7 @@
 const { getQuery, toJSON } = require('../../lib/util');
 const Repository = require('../Repository');
 
-module.exports = function ParametroRepository (models, Sequelize) {
+module.exports = function PlanCuentasRepository (models, Sequelize) {
   const { PlanCuentas } = models;
   const Op = Sequelize.Op;
 
@@ -11,6 +11,10 @@ module.exports = function ParametroRepository (models, Sequelize) {
     const query = getQuery(params);
 
     query.where = {};
+
+    if (params.idEmpresa) query.where.idEmpresa = params.idEmpresa;
+
+    if (params.tipoRegistro) query.where.tipoRegistro = params.tipoRegistro;
 
     const result = await PlanCuentas.findAndCountAll(query);
 

@@ -10,6 +10,7 @@ module.exports = function empresaService (repositories, helpers, res) {
     SucursalRepository,
     UsuarioEmpresaRepository,
     ProyectoRepository,
+    PlanCuentasRepository,
     transaction
   } = repositories;
 
@@ -64,19 +65,29 @@ module.exports = function empresaService (repositories, helpers, res) {
 
       const empresaCreada = await EmpresaRepository.createOrUpdate(data, transaccion);
 
+      const { rows } = await PlanCuentasRepository.findAll({ tipoRegistro: 'CONFIGURACION' });
+
+      for (const planCuenta of rows) {
+        delete planCuenta.id;
+
+        await PlanCuentasRepository.createOrUpdate({
+          ...planCuenta,
+          idEmpresa    : empresaCreada.id,
+          tipoRegistro : 'EJECUCION',
+          userCreated  : ID_USUARIO_ADMIN
+        }, transaccion);
+      }
+
       const proyectoCreado = await ProyectoRepository.createOrUpdate({
         idEmpresa   : empresaCreada.id,
         nombre      : 'GENERAL',
-        descripcion : 'Proyecto general'
+        descripcion : 'Proyecto general',
+        userCreated : ID_USUARIO_ADMIN
       }, transaccion);
 
       const nuevaConfiguracion = JSON.parse(JSON.stringify(CONFIGURACION_EMPRESA_DEFECTO));
 
       nuevaConfiguracion.comprobantes.idProyecto = proyectoCreado.id;
-
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-      console.log(empresaCreada.id, nuevaConfiguracion);
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
 
       await EmpresaRepository.createOrUpdate({ id: empresaCreada.id, configuracion: nuevaConfiguracion }, transaccion);
 
@@ -87,7 +98,8 @@ module.exports = function empresaService (repositories, helpers, res) {
         descripcion       : 'CASA MATRIZ',
         correoElectronico : data.correoElectronico,
         fiscal            : true,
-        estado            : 'ACTIVO'
+        estado            : 'ACTIVO',
+        userCreated       : ID_USUARIO_ADMIN
       }, transaccion);
 
       const contrasena = await AuthRepository.codificarContrasena(data.contrasena);

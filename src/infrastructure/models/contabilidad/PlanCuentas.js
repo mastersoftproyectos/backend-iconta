@@ -8,13 +8,13 @@ module.exports = (sequelize, DataTypes) => {
     id        : util.pk,
     idEmpresa : {
       type      : DataTypes.UUID,
-      allowNull : false,
+      allowNull : true,
       xlabel    : lang.t('fields.idEmpresa'),
       field     : 'id_empresa'
     },
     tipo: {
       type         : DataTypes.ENUM,
-      values       : ['ACTIVO', 'PASIVO', 'PATRIMONIO', 'INGRESO', 'GASTO'],
+      values       : ['ACTIVO', 'PASIVO', 'PATRIMONIO', 'INGRESOS', 'GASTOS'],
       defaultValue : 'ACTIVO',
       xlabel       : lang.t('fields.tipo'),
       field        : 'tipo'
@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull : false,
       xlabel    : lang.t('fields.numeroCuenta'),
       field     : 'numero_cuenta'
+    },
+    numeroCuentaPadre: {
+      type      : DataTypes.STRING(50),
+      allowNull : true,
+      xlabel    : lang.t('fields.numeroCuentaPadre'),
+      field     : 'numero_cuenta_padre'
     },
     nombre: {
       type   : DataTypes.STRING(500),
@@ -40,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
       type         : DataTypes.BOOLEAN,
       defaultValue : false,
       xlabel       : lang.t('fields.cuentaMonetaria'),
-      field        : 'cuenta:monetaria'
+      field        : 'cuenta_monetaria'
     },
     numeroCuentaSIN: {
       type      : DataTypes.STRING(50),
@@ -53,6 +59,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull : true,
       xlabel    : lang.t('fields.nombreCuentaSIN'),
       field     : 'nombre_cuenta_sin'
+    },
+    tipoRegistro: {
+      type         : DataTypes.ENUM,
+      values       : ['CONFIGURACION', 'EJECUCION'],
+      defaultValue : 'EJECUCION',
+      xlabel       : lang.t('fields.tipoRegistro'),
+      field        : 'tipo_registro'
     },
     estado: {
       type         : DataTypes.ENUM,

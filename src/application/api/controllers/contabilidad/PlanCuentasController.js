@@ -5,10 +5,16 @@ const { Respuesta } = require('../../../lib/respuesta');
 const { Finalizado, HttpCodes } = require('../../../lib/globals');
 
 module.exports = function setupPlanCuentasController (services) {
-  const { PlanCuentasService } = services;
+  const { PlanCuentasService, PermisoService } = services;
 
   async function findAll (req, res) {
     try {
+      const tienePermiso = await PermisoService.verificarPermisos({
+        roles    : [req.user.idRol],
+        permisos : 'sucursales:listar:todo'
+      });
+
+      if (!tienePermiso) req.query.idEmpresa = req.user.idEmpresa;
       const respuesta = await PlanCuentasService.findAll(req.query);
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));

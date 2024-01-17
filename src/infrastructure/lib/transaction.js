@@ -15,6 +15,9 @@ module.exports = function setupTransaction (sequelize) {
   }
 
   function rollback (t) {
+    console.log('==========_MENSAJE_A_MOSTRARSE_==========');
+    console.log(t);
+    console.log('==========_MENSAJE_A_MOSTRARSE_==========');
     if (t && t.finished !== 'commit' && t.finished !== 'rollback') {
       t.rollback();
     }
