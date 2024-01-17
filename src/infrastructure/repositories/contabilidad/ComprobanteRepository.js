@@ -4,13 +4,24 @@ const { getQuery, toJSON } = require('../../lib/util');
 const Repository = require('../Repository');
 
 module.exports = function ParametroRepository (models, Sequelize) {
-  const { Comprobante } = models;
+  const { Comprobante, Proyecto, Sucursal } = models;
   const Op = Sequelize.Op;
 
   async function findAll (params = {}) {
     const query = getQuery(params);
 
     query.where = {};
+
+    query.include = [
+      {
+        model : Proyecto,
+        as    : 'proyecto'
+      },
+      {
+        model : Sucursal,
+        as    : 'sucursal'
+      }
+    ];
 
     const result = await Comprobante.findAndCountAll(query);
 

@@ -5,7 +5,15 @@ const moment = require('moment');
 const { generateToken } = require('../../../application/lib/auth');
 
 module.exports = function userService (repositories, helpers, res) {
-  const { UsuarioRepository, RolUsuarioRepository, AuthRepository, RolRepository, transaction, ParametroRepository } = repositories;
+  const {
+    UsuarioRepository,
+    RolUsuarioRepository,
+    AuthRepository,
+    RolRepository,
+    transaction,
+    ParametroRepository,
+    UsuarioEmpresaRepository
+  } = repositories;
 
   async function listarUsuarios (params) {
     try {
@@ -141,27 +149,30 @@ module.exports = function userService (repositories, helpers, res) {
         usuario           : data.usuario
       }, transaccion);
 
-      if (existeUsuario) {
-        if (existeUsuario.correoElectronico === data.correoElectronico) {
-          throw new Error(`Ya se encuentra registrado un usuario con el correo electronico "${data.correoElectronico}".`);
-        }
+      let usuarioCreado = existeUsuario;
 
-        if (existeUsuario.usuario === data.usuario) {
-          throw new Error(`Ya se encuentra registrado un usuario con el nombre de usuario "${data.usuario}".`);
-        }
+      if (!existeUsuario) usuarioCreado = await UsuarioRepository.createOrUpdate(data, transaccion);
+
+      if (!data.idEmpresa || !data.idRol)  throw new Error('Debe completar correctamente los datos de registro');
+
+      const existeAsignacion = await UsuarioEmpresaRepository.findOne({
+        idUsuario : usuarioCreado.id,
+        idEmpresa : data.idEmpresa
+      });
+
+      if (existeAsignacion) {
+        await UsuarioEmpresaRepository.deleteItemCond({
+          idUsuario : usuarioCreado.id,
+          idEmpresa : data.idEmpresa
+        });
       }
 
-      const usuarioCreado = await UsuarioRepository.createOrUpdate(data, transaccion);
-
-      if (data.idRol) {
-        await RolUsuarioRepository.deleteItemCond({ idUsuario: usuarioCreado.id });
-
-        await RolUsuarioRepository.createOrUpdate({
-          idUsuario   : usuarioCreado.id,
-          idRol       : data.idRol,
-          userCreated : data.userCreated || data.userUpdated
-        }, transaccion);
-      }
+      await UsuarioEmpresaRepository.createOrUpdate({
+        idUsuario   : usuarioCreado.id,
+        idRol       : data.idRol,
+        idEmpresa   : data.idEmpresa,
+        userCreated : data.userCreated || data.userUpdated
+      }, transaccion);
 
       await transaction.commit(transaccion);
       return usuarioCreado;

@@ -44,6 +44,7 @@ module.exports = function UsuarioEmpresaRepository (models, Sequelize) {
     findOne,
     findById       : (id) => Repository.findById(id, UsuarioEmpresa),
     createOrUpdate : (item, t) => Repository.createOrUpdate(item, UsuarioEmpresa, t),
-    deleteItem     : (id, t) => Repository.deleteItem(id, UsuarioEmpresa, t)
+    deleteItem     : (id, t) => Repository.deleteItem(id, UsuarioEmpresa, t),
+    deleteItemCond : (params, t) => Repository.deleteItemCond(params, UsuarioEmpresa, t)
   };
 };

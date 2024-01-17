@@ -5,10 +5,17 @@ const { Respuesta } = require('../../../lib/respuesta');
 const { Finalizado, HttpCodes } = require('../../../lib/globals');
 
 module.exports = function setupUsuarioController (services) {
-  const { UsuarioService } = services;
+  const { UsuarioService, PermisoService } = services;
 
   async function listar (req, res) {
     try {
+      const tienePermiso = await PermisoService.verificarPermisos({
+        roles    : [req.user.idRol],
+        permisos : 'usuarios:listar:todo'
+      });
+
+      if (!tienePermiso) req.query.idEmpresa = req.user.idEmpresa;
+
       const respuesta = await UsuarioService.listarUsuarios(req.query);
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));
     } catch (error) {

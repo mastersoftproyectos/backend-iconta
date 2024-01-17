@@ -21,7 +21,10 @@ module.exports = function associations (models) {
     Parrafo,
     Certificacion,
     UsuarioEmpresa,
-    Empresa
+    Empresa,
+    Comprobante,
+    Proyecto,
+    Sucursal
   } = models;
 
   auth.belongsTo(usuario, { foreignKey: { name: 'idUsuario' }, as: 'usuario' });
@@ -85,6 +88,12 @@ module.exports = function associations (models) {
 
   UsuarioEmpresa.belongsTo(Empresa,  { foreignKey: 'idEmpresa', as: 'empresa' });
   Empresa.hasMany(UsuarioEmpresa, { foreignKey: 'idEmpresa', as: 'empresaEmpresa' });
+
+  Comprobante.belongsTo(Proyecto,  { foreignKey: 'idProyecto', as: 'proyecto' });
+  Proyecto.hasMany(Comprobante, { foreignKey: 'idProyecto', as: 'comprobantes' });
+
+  Comprobante.belongsTo(Sucursal,  { foreignKey: 'idSucursal', as: 'sucursal' });
+  Sucursal.hasMany(Comprobante, { foreignKey: 'idSucursal', as: 'comprobantes' });
 
   return models;
 };

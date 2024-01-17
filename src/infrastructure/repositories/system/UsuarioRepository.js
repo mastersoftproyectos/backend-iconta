@@ -105,16 +105,49 @@ module.exports = function usuariosRepository (models, Sequelize) {
 
     query.include = [
       {
-        attributes : ['id', 'nombre', 'sigla', 'nivel', 'idEntidad'],
-        model      : entidad,
-        as         : 'entidad'
-      },
-      {
-        through : { attributes: [] },
-        model   : rol,
-        as      : 'roles'
+        attributes: [
+          'id',
+          'idUsuario',
+          'idEmpresa',
+          'idRol',
+          'cargo',
+          'estado'
+        ],
+        model   : UsuarioEmpresa,
+        as      : 'usuarioEmpresa',
+        include : [
+          {
+            attributes: [
+              'id',
+              'idEmpresa',
+              'nombre',
+              'descripcion',
+              'estado'
+            ],
+            model : rol,
+            as    : 'rol'
+          },
+          {
+            attributes: [
+              'id',
+              'nit',
+              'nombreComercial',
+              'logo',
+              'correoElectronico',
+              'configuracion',
+              'codigoVerificacion',
+              'estado'
+            ],
+            model : Empresa,
+            as    : 'empresa'
+          }
+        ]
       }
     ];
+
+    if (params.idEmpresa) {
+      query.include[0].where = { idEmpresa: params.idEmpresa };
+    }
 
     const result = await usuario.findAndCountAll(query);
     return toJSON(result);
