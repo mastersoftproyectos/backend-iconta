@@ -11,10 +11,11 @@ module.exports = function setupPlanCuentasController (services) {
     try {
       const tienePermiso = await PermisoService.verificarPermisos({
         roles    : [req.user.idRol],
-        permisos : 'sucursales:listar:todo'
+        permisos : 'plan-cuentas:listar:todo'
       });
 
       if (!tienePermiso) req.query.idEmpresa = req.user.idEmpresa;
+
       const respuesta = await PlanCuentasService.findAll(req.query);
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, respuesta));

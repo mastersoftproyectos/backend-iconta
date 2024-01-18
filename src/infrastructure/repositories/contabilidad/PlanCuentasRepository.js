@@ -16,6 +16,8 @@ module.exports = function PlanCuentasRepository (models, Sequelize) {
 
     if (params.tipoRegistro) query.where.tipoRegistro = params.tipoRegistro;
 
+    if (params.cuentaRegistrable) query.where.cuentaRegistrable = true;
+
     const result = await PlanCuentas.findAndCountAll(query);
 
     return toJSON(result);
