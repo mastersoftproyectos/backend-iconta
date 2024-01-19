@@ -12,6 +12,11 @@ module.exports = function PlanCuentasRepository (models, Sequelize) {
 
     query.where = {};
 
+    query.order = [
+      ['numeroCuenta', 'ASC'],
+      ['tipo', 'ASC']
+    ];
+
     if (params.idEmpresa) query.where.idEmpresa = params.idEmpresa;
 
     if (params.tipoRegistro) query.where.tipoRegistro = params.tipoRegistro;

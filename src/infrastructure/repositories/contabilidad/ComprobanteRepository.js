@@ -4,7 +4,7 @@ const { getQuery, toJSON } = require('../../lib/util');
 const Repository = require('../Repository');
 
 module.exports = function ParametroRepository (models, Sequelize) {
-  const { Comprobante, Proyecto, Sucursal } = models;
+  const { Comprobante, Proyecto, Sucursal, ComprobanteDetalle } = models;
   const Op = Sequelize.Op;
 
   async function findAll (params = {}) {
@@ -20,6 +20,10 @@ module.exports = function ParametroRepository (models, Sequelize) {
       {
         model : Sucursal,
         as    : 'sucursal'
+      },
+      {
+        model : ComprobanteDetalle,
+        as    : 'comprobanteDetalles'
       }
     ];
 
@@ -28,9 +32,27 @@ module.exports = function ParametroRepository (models, Sequelize) {
     return toJSON(result);
   }
 
+  async function findOne (params = {}) {
+    const query = {};
+    query.where = params;
+
+    query.include = [
+      {
+        model : ComprobanteDetalle,
+        as    : 'comprobanteDetalles'
+      }
+    ];
+
+    const result = await Comprobante.findOne(query);
+
+    if (!result) return null;
+
+    return result.toJSON();
+  }
+
   return {
     findAll,
-    findOne        : params => Repository.findOne(params, Comprobante),
+    findOne,
     findById       : (id) => Repository.findById(id, Comprobante),
     createOrUpdate : (item, t) => Repository.createOrUpdate(item, Comprobante, t),
     deleteItem     : (id, t) => Repository.deleteItem(id, Comprobante, t),

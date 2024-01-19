@@ -34,6 +34,8 @@ module.exports = function entidadService (repositories, helpers, res) {
         await ComprobanteDetalleRepository.deleteItemCond({ idComprobante: sucursal.id });
 
         for (const asiento of data.asientos) {
+          asiento.id && delete asiento.id;
+
           await ComprobanteDetalleRepository.createOrUpdate({
             ...asiento,
             idComprobante : sucursal.id,

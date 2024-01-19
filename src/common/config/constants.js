@@ -10,7 +10,7 @@ const constants = {
     comprobantes: {
       numeroDocumento          : '',
       nombre                   : '',
-      minGlosa                 : 100,
+      minGlosa                 : 2,
       tipoCorrelativo          : 'SUCURSAL',
       mayusculas               : false,
       copiarGlosaEspecifica    : false,
