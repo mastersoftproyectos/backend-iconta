@@ -2,6 +2,12 @@
 
 const path = require('path');
 
-const app = {};
+const app = {
+  backendUrl   : 'http://localhost:3001',
+  frontendUrl  : 'http://localhost:9000',
+  publicFiles  : path.resolve('public/files'),
+  privateFiles : path.resolve('files')
+};
+
 
 module.exports = app;

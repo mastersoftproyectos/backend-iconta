@@ -2,6 +2,8 @@
 
 const csvToJson = require('csvtojson');
 const { bufferToStream, createObject } = require('./util');
+const fs = require('fs');
+const { pathFiles, publicFiles, privateFiles, backendUrl } = require('../../common/config/app');
 
 function csv (file, headers) {
   return new Promise((resolve, reject) => {
@@ -39,6 +41,58 @@ function csv (file, headers) {
   });
 }
 
+const mimeType = {
+  png  : 'image',
+  jpg  : 'image',
+  jpeg : 'image',
+  pdf  : 'pdf'
+};
+
+async function subirArchivoPrivado ({ archivo, subRuta = '' }) {
+  const nombreArchivo = `${Date.now()}-${archivo.name}`;
+
+  const ubicacionCompleta = `${privateFiles}/${subRuta}`;
+
+  if (!fs.existsSync(ubicacionCompleta)) fs.mkdirSync(ubicacionCompleta);
+
+  const pathFile = `${ubicacionCompleta}/${nombreArchivo}`;
+
+  const tipoArchivo = nombreArchivo.split('.')[nombreArchivo.split('.').length - 1];
+
+  await archivo.mv(pathFile);
+
+  return {
+    ubicacionCompleta : pathFile,
+    ubicacionRelativa : `${subRuta}/${nombreArchivo}`,
+    nombreArchivo     : nombreArchivo,
+    tipoArchivo       : mimeType[tipoArchivo]
+  };
+}
+
+async function subirArchivoPublico ({ archivo, subRuta = '' }) {
+  const nombreArchivo = `${Date.now()}-${archivo.name}`;
+
+  const ubicacionCompleta = `${publicFiles}/${subRuta}`;
+
+  if (!fs.existsSync(ubicacionCompleta)) fs.mkdirSync(ubicacionCompleta);
+
+  const pathFile = `${ubicacionCompleta}/${nombreArchivo}`;
+
+  const tipoArchivo = nombreArchivo.split('.')[nombreArchivo.split('.').length - 1];
+
+  await archivo.mv(pathFile);
+
+  return {
+    url               : `${backendUrl}/files/${subRuta}/${nombreArchivo}`,
+    ubicacionCompleta : pathFile,
+    ubicacionRelativa : `${subRuta}/${nombreArchivo}`,
+    nombreArchivo     : nombreArchivo,
+    tipoArchivo       : mimeType[tipoArchivo]
+  };
+}
+
 module.exports = {
-  csv
+  csv,
+  subirArchivoPrivado,
+  subirArchivoPublico
 };

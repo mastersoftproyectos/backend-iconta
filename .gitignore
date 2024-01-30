@@ -17,6 +17,7 @@ src/common/lib/event-bus
 reportes/
 deploy/roles/backend/files/base-backend
 deploy/roles/frontend/files/base-backend
+public/files
 
 ## temporales creados por emacs
 *~

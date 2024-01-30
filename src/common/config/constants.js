@@ -8,6 +8,8 @@ const constants = {
       nroDigitos: 2
     },
     comprobantes: {
+      fechaInicio              : '',
+      fechaFin                 : '',
       numeroDocumento          : '',
       nombre                   : '',
       minGlosa                 : 2,
