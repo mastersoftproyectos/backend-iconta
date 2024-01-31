@@ -14,5 +14,7 @@ module.exports = function setupSocio (api, controllers, middlewares) {
 
   api.delete('/comprobante/:id', AuthMiddleware.verificarPermisos(['comprobante:eliminar']), ComprobanteController.remove);
 
+  api.patch('/comprobante/:id/imprimir', AuthMiddleware.verificarPermisos(['comprobante:imprimir']), ComprobanteController.print);
+
   return api;
 };

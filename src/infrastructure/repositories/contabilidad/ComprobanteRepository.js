@@ -4,7 +4,7 @@ const { getQuery, toJSON } = require('../../lib/util');
 const Repository = require('../Repository');
 
 module.exports = function ParametroRepository (models, Sequelize) {
-  const { Comprobante, Proyecto, Sucursal, ComprobanteDetalle } = models;
+  const { Comprobante, Proyecto, Sucursal, ComprobanteDetalle, PlanCuentas } = models;
   const Op = Sequelize.Op;
 
   async function findAll (params = {}) {
@@ -38,8 +38,14 @@ module.exports = function ParametroRepository (models, Sequelize) {
 
     query.include = [
       {
-        model : ComprobanteDetalle,
-        as    : 'comprobanteDetalles'
+        model   : ComprobanteDetalle,
+        as      : 'comprobanteDetalles',
+        include : [
+          {
+            model : PlanCuentas,
+            as    : 'planCuenta'
+          }
+        ]
       }
     ];
 

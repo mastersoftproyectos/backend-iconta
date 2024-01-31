@@ -6,7 +6,17 @@ const app = {
   backendUrl   : 'http://localhost:3001',
   frontendUrl  : 'http://localhost:9000',
   publicFiles  : path.resolve('public/files'),
-  privateFiles : path.resolve('files')
+  privateFiles : path.resolve('files'),
+  pathTemplates : path.resolve('src/views'),
+  scrapingMode  : {
+    headless          : false,
+    // headless          : 'new',
+    args              : ['--no-sandbox'],
+    slowMo            : 50,
+    height            : 1080,
+    width             : 1920,
+    deviceScaleFactor : 2
+  }
 };
 
 

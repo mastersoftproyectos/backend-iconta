@@ -24,6 +24,7 @@ module.exports = function associations (models) {
     Empresa,
     Comprobante,
     ComprobanteDetalle,
+    PlanCuentas,
     Proyecto,
     Sucursal
   } = models;
@@ -92,6 +93,9 @@ module.exports = function associations (models) {
 
   ComprobanteDetalle.belongsTo(Comprobante,  { foreignKey: 'idComprobante', as: 'comprobante' });
   Comprobante.hasMany(ComprobanteDetalle, { foreignKey: 'idComprobante', as: 'comprobanteDetalles' });
+
+  ComprobanteDetalle.belongsTo(PlanCuentas,  { foreignKey: 'idPlanCuenta', as: 'planCuenta' });
+  PlanCuentas.hasMany(ComprobanteDetalle, { foreignKey: 'idPlanCuenta', as: 'comprobanteDetalles' });
 
   Comprobante.belongsTo(Proyecto,  { foreignKey: 'idProyecto', as: 'proyecto' });
   Proyecto.hasMany(Comprobante, { foreignKey: 'idProyecto', as: 'comprobantes' });
