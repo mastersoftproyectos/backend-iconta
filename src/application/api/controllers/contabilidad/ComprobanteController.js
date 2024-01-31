@@ -7,6 +7,7 @@ const ejs = require('ejs');
 const { pathTemplates, publicFiles } = require('../../../../common/config/app');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const moment = require('moment');
 
 module.exports = function setupComprobanteController (services) {
   const { ComprobanteService, EmpresaService } = services;
@@ -80,15 +81,15 @@ module.exports = function setupComprobanteController (services) {
 
       const respuesta = await ComprobanteService.findOne(data);
 
-      const { configuracion } = await EmpresaService.findOne({ id: req.user.idEmpresa });
+      const empresa = await EmpresaService.findOne({ id: req.user.idEmpresa });
 
-      const { impresionComprobantes } = configuracion;
-
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-      console.log(respuesta);
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-
-      const datosPlantillaComprobante = await ejs.renderFile(`${pathTemplates}/Comprobante.ejs`, respuesta);
+      const datosPlantillaComprobante = await ejs.renderFile(`${pathTemplates}/Comprobante.ejs`, {
+        ...respuesta,
+        debe  : respuesta.comprobanteDetalles.filter(asiento => asiento.debe > 0),
+        haber : respuesta.comprobanteDetalles.filter(asiento => asiento.haber > 0),
+        ...empresa,
+        fecha : moment().locale('es').format('LL')
+      });
 
       const rutaPdf = `${publicFiles}/${req.user.idEmpresa}/Comprobante.pdf`;
 
@@ -98,14 +99,20 @@ module.exports = function setupComprobanteController (services) {
 
       await page.setContent(datosPlantillaComprobante);
 
-      await page.pdf({ path: rutaPdf, format: 'A4' });
+      await page.pdf({
+        path   : rutaPdf,
+        format : 'letter',
+        margin : {
+          top    : '1.5cm',
+          left   : '.5cm',
+          right  : '.5cm',
+          bottom : '1.5cm'
+        }
+      });
 
       await browser.close();
 
       const archivoBase64 = fs.readFileSync(rutaPdf, 'base64');
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
-      console.log(respuesta.comprobanteDetalles, datosPlantillaComprobante);
-      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
 
       return res.status(200).send(new Respuesta('OK', Finalizado.OK, archivoBase64));
     } catch (error) {

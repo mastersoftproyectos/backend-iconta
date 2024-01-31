@@ -5,6 +5,7 @@ const { ErrorApp } = require('../../lib/error');
 
 module.exports = function entidadService (repositories, helpers, res) {
   const { ComprobanteRepository, ComprobanteDetalleRepository } = repositories;
+  const { FechaHelper } = helpers;
 
   async function findAll (params) {
     try {
@@ -28,6 +29,8 @@ module.exports = function entidadService (repositories, helpers, res) {
 
   async function createOrUpdate (data) {
     try {
+      if (data.fecha) data.fecha = FechaHelper.formatearFecha(data.fecha);
+
       const sucursal = await ComprobanteRepository.createOrUpdate(data);
 
       if (data.asientos) {
