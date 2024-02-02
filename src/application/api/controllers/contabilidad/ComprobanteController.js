@@ -93,9 +93,7 @@ module.exports = function setupComprobanteController (services) {
 
       const rutaPdf = `${publicFiles}/${req.user.idEmpresa}/Comprobante.pdf`;
 
-      const browser = await puppeteer.launch();
-
-      const page = await browser.newPage({
+      const browser = await puppeteer.launch({
         // headless          : false,
         headless          : 'new',
         args              : ['--no-sandbox'],
@@ -104,6 +102,8 @@ module.exports = function setupComprobanteController (services) {
         width             : 1920,
         deviceScaleFactor : 2
       });
+
+      const page = await browser.newPage();
 
       await page.setContent(datosPlantillaComprobante);
 
