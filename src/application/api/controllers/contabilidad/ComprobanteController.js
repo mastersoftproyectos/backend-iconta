@@ -95,7 +95,15 @@ module.exports = function setupComprobanteController (services) {
 
       const browser = await puppeteer.launch();
 
-      const page = await browser.newPage();
+      const page = await browser.newPage({
+        // headless          : false,
+        headless          : 'new',
+        args              : ['--no-sandbox'],
+        slowMo            : 50,
+        height            : 1080,
+        width             : 1920,
+        deviceScaleFactor : 2
+      });
 
       await page.setContent(datosPlantillaComprobante);
 
