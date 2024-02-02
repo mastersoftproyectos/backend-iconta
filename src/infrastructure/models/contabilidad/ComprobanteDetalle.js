@@ -33,12 +33,14 @@ module.exports = (sequelize, DataTypes) => {
     debe: {
       type      : DataTypes.DOUBLE,
       allowNull : true,
+      default   : 0,
       xlabel    : lang.t('fields.debe'),
       field     : 'debe'
     },
     haber: {
       type      : DataTypes.DOUBLE,
       allowNull : true,
+      default   : 0,
       xlabel    : lang.t('fields.haber'),
       field     : 'haber'
     }
