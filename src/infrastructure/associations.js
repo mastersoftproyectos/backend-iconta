@@ -91,6 +91,9 @@ module.exports = function associations (models) {
   UsuarioEmpresa.belongsTo(Empresa,  { foreignKey: 'idEmpresa', as: 'empresa' });
   Empresa.hasMany(UsuarioEmpresa, { foreignKey: 'idEmpresa', as: 'empresaEmpresa' });
 
+  UsuarioEmpresa.belongsTo(Sucursal,  { foreignKey: 'idSucursal', as: 'sucursal' });
+  Sucursal.hasMany(UsuarioEmpresa, { foreignKey: 'idSucursal', as: 'sucursalEmpresa' });
+
   ComprobanteDetalle.belongsTo(Comprobante,  { foreignKey: 'idComprobante', as: 'comprobante' });
   Comprobante.hasMany(ComprobanteDetalle, { foreignKey: 'idComprobante', as: 'comprobanteDetalles' });
 

@@ -3440,15 +3440,47 @@ let items = [
 // Asignando datos de log y timestamps a los datos
 items = setTimestampsSeeder(items);
 
+const getChildren = (numeroCuenta) => {
+  return items.filter(item => item.numero_cuenta_padre === numeroCuenta);
+};
+
+const insertChildrens = async (queryInterface, numeroCuenta) => {
+  const newItems = getChildren(numeroCuenta);
+
+  if (!newItems.length)  return [];
+
+  const insertChildrens = await queryInterface.bulkInsert('contabilidad_plan_cuenta', newItems, { returning: true });
+
+  return insertChildrens;
+};
+
 module.exports = {
-  up (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('contabilidad_plan_cuenta', items, {})
-      .then(async () => {})
-      .catch(error => {
-        if (error.message.indexOf('already exists') > -1) return;
-        console.error(error);
-        // logger.error(error)
-      });
+  async up (queryInterface, Sequelize) {
+    const insertParents = await queryInterface.bulkInsert('contabilidad_plan_cuenta', items.filter(item => !item.numero_cuenta_padre), { returning: true });
+
+    for (const parent of insertParents) {
+      const childrenLevelOne = await insertChildrens(queryInterface, parent.numero_cuenta);
+
+      for (const childLevelOne of childrenLevelOne) {
+        const childrenLevelTwo = await insertChildrens(queryInterface, childLevelOne.numero_cuenta);
+
+        for (const childLevelTwo of childrenLevelTwo) {
+          const childrenLevelTree = await insertChildrens(queryInterface, childLevelTwo.numero_cuenta);
+
+          for (const childLevelTree of childrenLevelTree) {
+            const childrenLevelFour = await insertChildrens(queryInterface, childLevelTree.numero_cuenta);
+          }
+        }
+      }
+    }
+
+    // return queryInterface.bulkInsert('contabilidad_plan_cuenta', items, { returning: true })
+    //   .then(async () => {})
+    //   .catch(error => {
+    //     if (error.message.indexOf('already exists') > -1) return;
+    //     console.error(error);
+    //     // logger.error(error)
+    //   });
   },
 
   down (queryInterface, Sequelize) { }

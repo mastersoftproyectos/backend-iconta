@@ -153,17 +153,23 @@ module.exports = function userService (repositories, helpers, res) {
 
       if (!existeUsuario) usuarioCreado = await UsuarioRepository.createOrUpdate(data, transaccion);
 
-      if (!data.idEmpresa || !data.idRol)  throw new Error('Debe completar correctamente los datos de registro');
+      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
+      console.log(data);
+      console.log('==========_MENSAJE_A_MOSTRARSE_==========');
+
+      if (!data.idEmpresa || !data.idSucursal || !data.idRol)  throw new Error('Debe completar correctamente los datos de registro');
 
       const existeAsignacion = await UsuarioEmpresaRepository.findOne({
-        idUsuario : usuarioCreado.id,
-        idEmpresa : data.idEmpresa
+        idUsuario  : usuarioCreado.id,
+        idEmpresa  : data.idEmpresa,
+        idSucursal : data.idSucursal
       });
 
       if (existeAsignacion) {
         await UsuarioEmpresaRepository.deleteItemCond({
-          idUsuario : usuarioCreado.id,
-          idEmpresa : data.idEmpresa
+          idUsuario  : usuarioCreado.id,
+          idEmpresa  : data.idEmpresa,
+          idSucursal : data.idSucursal
         });
       }
 
@@ -171,6 +177,7 @@ module.exports = function userService (repositories, helpers, res) {
         idUsuario   : usuarioCreado.id,
         idRol       : data.idRol,
         idEmpresa   : data.idEmpresa,
+        idSucursal  : data.idSucursal,
         userCreated : data.userCreated || data.userUpdated
       }, transaccion);
 

@@ -6,7 +6,7 @@ const Repository = require('../Repository');
 
 module.exports = function usuariosRepository (models, Sequelize) {
   const Op = Sequelize.Op;
-  const { usuario, rol, entidad, UsuarioEmpresa, Empresa } = models;
+  const { usuario, rol, entidad, UsuarioEmpresa, Empresa, Sucursal } = models;
 
   async function findAll (params = {}) {
     const query = getQuery(params);
@@ -208,8 +208,33 @@ module.exports = function usuariosRepository (models, Sequelize) {
               'codigoVerificacion',
               'estado'
             ],
-            model : Empresa,
-            as    : 'empresa'
+            model   : Empresa,
+            as      : 'empresa',
+            include : [
+              {
+                attributes: [
+                  'abreviatura',
+                  'celular',
+                  'ciudad',
+                  'correoElectronico',
+                  'descripcion',
+                  'direccion',
+                  'estado',
+                  'fax',
+                  'fiscal',
+                  'id',
+                  'idEmpresa',
+                  'nombre',
+                  'numeroSucursal',
+                  'pais',
+                  'sitioWeb',
+                  'telefono',
+                  'zona'
+                ],
+                model : Sucursal,
+                as    : 'sucursales'
+              }
+            ]
           }
         ]
       }

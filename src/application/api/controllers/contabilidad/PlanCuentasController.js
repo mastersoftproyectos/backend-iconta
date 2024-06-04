@@ -14,7 +14,7 @@ module.exports = function setupPlanCuentasController (services) {
         permisos : 'plan-cuentas:listar:todo'
       });
 
-      if (!tienePermiso) req.query.idEmpresa = req.user.idEmpresa;
+      // if (!tienePermiso) req.query.idEmpresa = req.user.idEmpresa;
 
       const respuesta = await PlanCuentasService.findAll(req.query);
 

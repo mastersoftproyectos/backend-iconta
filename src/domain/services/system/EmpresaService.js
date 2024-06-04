@@ -91,9 +91,9 @@ module.exports = function empresaService (repositories, helpers, res) {
 
       await EmpresaRepository.createOrUpdate({ id: empresaCreada.id, configuracion: nuevaConfiguracion }, transaccion);
 
-      await SucursalRepository.createOrUpdate({
+      const sucursalCreada = await SucursalRepository.createOrUpdate({
         idEmpresa         : empresaCreada.id,
-        numeroSucursal    : 1,
+        numeroSucursal    : 0,
         nombre            : 'CASA MATRIZ',
         descripcion       : 'CASA MATRIZ',
         correoElectronico : data.correoElectronico,
@@ -124,6 +124,7 @@ module.exports = function empresaService (repositories, helpers, res) {
 
       await UsuarioEmpresaRepository.createOrUpdate({
         idEmpresa   : empresaCreada.id,
+        idSucursal  : sucursalCreada.id,
         idUsuario   : existeUsuario.id,
         idRol       : ID_ROL_ADMIN_EMPRESA,
         userCreated : ID_USUARIO_ADMIN

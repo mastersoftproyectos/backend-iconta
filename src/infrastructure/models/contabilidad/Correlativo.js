@@ -24,6 +24,20 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue : 0,
       xlabel       : lang.t('fields.correlativo'),
       field        : 'correlativo'
+    },
+    anio: {
+      type         : DataTypes.INTEGER,
+      allowNull    : true,
+      defaultValue : 0,
+      xlabel       : lang.t('fields.anio'),
+      field        : 'anio'
+    },
+    mes: {
+      type         : DataTypes.INTEGER,
+      allowNull    : true,
+      defaultValue : 0,
+      xlabel       : lang.t('fields.mes'),
+      field        : 'mes'
     }
   };
 

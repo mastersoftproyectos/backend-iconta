@@ -52,7 +52,7 @@ module.exports = function authService (repositories, helpers, res) {
     return permisos;
   }
 
-  async function getResponse (usuario, idRolSeleccionado, idEmpresaSeleccionada) {
+  async function getResponse (usuario, idRolSeleccionado, idEmpresaSeleccionada, idSucursalSeleccionada) {
     try {
       usuario.menu = await getMenusRoles([idRolSeleccionado]);
       usuario.permisos = await getPermisos([idRolSeleccionado]);
@@ -61,6 +61,7 @@ module.exports = function authService (repositories, helpers, res) {
         idRoles           : idRolSeleccionado,
         idUsuario         : usuario.id,
         idEmpresa         : idEmpresaSeleccionada,
+        idSucursal        : idSucursalSeleccionada,
         celular           : usuario.celular,
         correoElectronico : usuario.correoElectronico,
         usuario           : usuario.usuario
@@ -82,12 +83,17 @@ module.exports = function authService (repositories, helpers, res) {
 
       const usuarioEmpresa = existeUsuario.usuarioEmpresa.find(x => x.idEmpresa === datos.idEmpresa && x.idRol === datos.idRol);
 
-      if (!usuarioEmpresa) throw new Error('Error al recuperar datos de su rol o empresa');
+      const sucursal = usuarioEmpresa.empresa.sucursales.find(sucursal => sucursal.id === datos.idSucursal);
 
-      const respuesta = await getResponse(existeUsuario, usuarioEmpresa.idRol, usuarioEmpresa.idEmpresa);
+      if (!usuarioEmpresa || !sucursal) throw new Error('Error al recuperar datos de su rol o empresa');
+
+      const respuesta = await getResponse(existeUsuario, usuarioEmpresa.idRol, usuarioEmpresa.idEmpresa, sucursal.id);
 
       respuesta.rol = usuarioEmpresa.rol;
       respuesta.empresa = usuarioEmpresa.empresa;
+
+      respuesta.idEmpresa = usuarioEmpresa.empresa.id;
+      respuesta.idSucursal = sucursal.id;
 
       await AuthRepository.deleteItemCond({ idUsuario: existeUsuario.id });
 
