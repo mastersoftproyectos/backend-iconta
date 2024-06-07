@@ -2,9 +2,12 @@
 
 const { setTimestampsSeeder } = require('../lib/util');
 
+const { empresas }  = require('./0002-seeder-empresa');
+const uuid = require('uuid');
+
 let items = [
   {
-    id                  : '648253a1-6bbf-4efa-a5fb-922eedc2463e',
+
     id_empresa          : null,
     numero_cuenta       : '1',
     nombre              : 'ACTIVO',
@@ -17,7 +20,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b3a75105-e8f5-48bf-9f15-383a8d4fbc78',
+
     id_empresa          : null,
     numero_cuenta       : '11',
     nombre              : 'ACTIVO CORRIENTE',
@@ -30,7 +33,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '13f02799-0503-43a2-8f80-bb9b41d00939',
+
     id_empresa          : null,
     numero_cuenta       : '1101',
     nombre              : 'DISPONIBLE',
@@ -43,7 +46,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0416d533-cfed-4008-ae15-c055806f1c8d',
+
     id_empresa          : null,
     numero_cuenta       : '110101',
     nombre              : 'CAJA',
@@ -56,7 +59,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2b24af16-2cc8-4069-ad09-4e7ae7f2d739',
+
     id_empresa          : null,
     numero_cuenta       : '110101001',
     nombre              : 'CAJA M/N',
@@ -69,7 +72,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c786c43a-1d59-4330-83bf-3edc43860032',
+
     id_empresa          : null,
     numero_cuenta       : '110101002',
     nombre              : 'CAJA M/E',
@@ -82,7 +85,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd6156bd4-faf0-401e-953f-e42adad84c6b',
+
     id_empresa          : null,
     numero_cuenta       : '110101003',
     nombre              : 'CAJA CHICA',
@@ -95,7 +98,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '50930f2a-8e57-4f0e-88d9-84914fcbfbae',
+
     id_empresa          : null,
     numero_cuenta       : '110102',
     nombre              : 'BANCOS MONEDA NACIONAL',
@@ -108,7 +111,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9abc0653-cf00-4ec4-9728-59199d750e9f',
+
     id_empresa          : null,
     numero_cuenta       : '110102001',
     nombre              : 'BANCO NACIONAL DE BOLIVIA - BNB M/N',
@@ -121,7 +124,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '97045c6b-5eeb-4ae8-af45-d667e1fed2f3',
+
     id_empresa          : null,
     numero_cuenta       : '110103',
     nombre              : 'BANCOS MONEDA EXTRANJERA',
@@ -134,7 +137,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8ff049d8-27f6-46c8-8893-86fa202949d8',
+
     id_empresa          : null,
     numero_cuenta       : '110103001',
     nombre              : 'BANCO NACIONAL DE BOLIVIA - BNB M/E',
@@ -147,7 +150,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f2ae4341-c377-4f1f-9ea0-332b21069baa',
+
     id_empresa          : null,
     numero_cuenta       : '1102',
     nombre              : 'EXIGIBLE',
@@ -160,7 +163,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ea128bc1-9469-485b-9967-608d04095cd6',
+
     id_empresa          : null,
     numero_cuenta       : '110201',
     nombre              : 'CUENTAS POR COBRAR M/N',
@@ -173,7 +176,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8a492bb3-aa04-4d20-9a9a-0df7b41a766b',
+
     id_empresa          : null,
     numero_cuenta       : '110201001',
     nombre              : 'CUENTAS POR COBRAR M/N',
@@ -186,7 +189,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'abd213cd-639d-44c0-824c-4378b6124f2a',
+
     id_empresa          : null,
     numero_cuenta       : '110201002',
     nombre              : 'LETRAS POR COBRAR',
@@ -199,7 +202,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '7eac7993-3b0c-4a6b-bc21-450d42849daf',
+
     id_empresa          : null,
     numero_cuenta       : '110202',
     nombre              : 'CUENTAS POR COBRAR M/E',
@@ -212,7 +215,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '30f89c23-81c4-4dc8-bf4b-2dfa76b26482',
+
     id_empresa          : null,
     numero_cuenta       : '110202001',
     nombre              : 'CUENTAS POR COBRAR M/E',
@@ -225,7 +228,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '281403f2-4308-4d7c-a1e2-e472bcbf7260',
+
     id_empresa          : null,
     numero_cuenta       : '110203',
     nombre              : 'CLIENTES POR COBRAR M/N',
@@ -238,7 +241,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e12a5194-e00c-4b26-9acd-f948d66c5d90',
+
     id_empresa          : null,
     numero_cuenta       : '110203001',
     nombre              : 'CLIENTES POR COBRAR M/N',
@@ -251,7 +254,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e7de78ab-cddc-4b59-a0eb-67a04793e454',
+
     id_empresa          : null,
     numero_cuenta       : '110203002',
     nombre              : 'EJECUCION DE PRESUPUESTOS',
@@ -264,7 +267,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8e028eb2-b660-402f-a5dd-eb60187e12fd',
+
     id_empresa          : null,
     numero_cuenta       : '110204',
     nombre              : 'CLIENTES POR COBRAR M/E',
@@ -277,7 +280,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2aa97f92-0bed-4ae7-a4ba-1018e39c3703',
+
     id_empresa          : null,
     numero_cuenta       : '110204001',
     nombre              : 'CLIENTES POR COBRAR M/E',
@@ -290,7 +293,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '7ecba356-0c22-4c2c-a3e1-d1d96c12f400',
+
     id_empresa          : null,
     numero_cuenta       : '110205',
     nombre              : 'ENTREGA FONDOS A RENDIR',
@@ -303,7 +306,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd0bbc2f1-23ec-4d1e-a420-cf20a07fc753',
+
     id_empresa          : null,
     numero_cuenta       : '110205001',
     nombre              : 'ENTREGA FONDOS A RENDIR',
@@ -316,7 +319,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'a2d8d46a-1d72-4421-a7de-5b2d46180d3e',
+
     id_empresa          : null,
     numero_cuenta       : '110206',
     nombre              : 'ANTICIPOS AL PERSONAL',
@@ -329,7 +332,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '5a09364b-7f6d-4d6f-931a-b4eee86a4305',
+
     id_empresa          : null,
     numero_cuenta       : '110206001',
     nombre              : 'ANTICIPO AL PERSONAL',
@@ -342,7 +345,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'bb676b95-e0c5-4ef8-b700-b99885b1c25d',
+
     id_empresa          : null,
     numero_cuenta       : '110206002',
     nombre              : 'ALQUILERES PAGADOS POR ADELANTADO',
@@ -355,7 +358,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4375da3d-ed95-4845-a983-d309d7999e25',
+
     id_empresa          : null,
     numero_cuenta       : '110206003',
     nombre              : 'ANTICIPO A PROVEEDORES',
@@ -368,7 +371,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9772a039-f398-42ed-96b7-fe7d504e9215',
+
     id_empresa          : null,
     numero_cuenta       : '110207',
     nombre              : 'ANTICIPOS A CUENTA UTILIDADES SOCIOS',
@@ -381,7 +384,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0f1dad75-15d1-4d03-9a82-c537663643b5',
+
     id_empresa          : null,
     numero_cuenta       : '110208',
     nombre              : 'PRESTAMOS A SOCIOS',
@@ -394,7 +397,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '5e24752c-9ffc-4afe-b654-375a50d8d630',
+
     id_empresa          : null,
     numero_cuenta       : '110209',
     nombre              : 'PRESTAMOS AL PERSONAL',
@@ -407,7 +410,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0c15ed6f-3f98-4ad7-8ceb-daaae5dfcf8c',
+
     id_empresa          : null,
     numero_cuenta       : '110209001',
     nombre              : 'PRESTAMOS AL PERSONAL',
@@ -420,7 +423,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ff991bc3-f02d-4621-8a75-ff2c88079f27',
+
     id_empresa          : null,
     numero_cuenta       : '110210',
     nombre              : 'PRESTAMOS VARIOS',
@@ -433,7 +436,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '77bb4500-5ae5-4906-8877-11eb665127a1',
+
     id_empresa          : null,
     numero_cuenta       : '110211',
     nombre              : 'IMPUESTO IVA CREDITO FISCAL',
@@ -446,7 +449,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '270602bb-bde9-4584-bfef-a2cd7d5bcb74',
+
     id_empresa          : null,
     numero_cuenta       : '110211001',
     nombre              : 'CREDITO FISCAL IVA',
@@ -459,7 +462,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f1d978a5-60ba-4f37-a12b-d985b80f02c4',
+
     id_empresa          : null,
     numero_cuenta       : '110211002',
     nombre              : 'CREDITO FISCAL IVA DIFERIDO',
@@ -472,7 +475,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '3f0efa7a-b9f6-422e-9cd9-63132fcf0b91',
+
     id_empresa          : null,
     numero_cuenta       : '110212',
     nombre              : 'IMPUESTO A LAS UTILIDADES',
@@ -485,7 +488,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4d052cfb-a131-4c70-b1f0-45a6980f4b32',
+
     id_empresa          : null,
     numero_cuenta       : '110212001',
     nombre              : 'I.U.E. POR COMPENSAR',
@@ -498,7 +501,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '766e0111-3c94-4d13-b3d4-b49e26c4060a',
+
     id_empresa          : null,
     numero_cuenta       : '1103',
     nombre              : 'INVENTARIOS',
@@ -511,7 +514,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '265e63f7-fd91-4df3-90bf-175a54f7f4a0',
+
     id_empresa          : null,
     numero_cuenta       : '110301',
     nombre              : 'INVENTARIO DE MERCADERIAS',
@@ -524,7 +527,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '09ca13a4-d5fd-4a86-817c-f67d4e58080a',
+
     id_empresa          : null,
     numero_cuenta       : '110301001',
     nombre              : 'INVENTARIO DE MERCADERIAS',
@@ -537,7 +540,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c1cfb3f2-6d41-4e6e-8bd1-11635d8381f5',
+
     id_empresa          : null,
     numero_cuenta       : '1104',
     nombre              : 'MERCADERIA EN TRANSITO',
@@ -550,7 +553,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd6654af7-c2b2-4add-a56d-1d37976a6d9b',
+
     id_empresa          : null,
     numero_cuenta       : '110401',
     nombre              : 'MERCADERIA EN TRANSITO',
@@ -563,7 +566,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4d916067-faeb-4aff-8e7c-552bbd82b7fc',
+
     id_empresa          : null,
     numero_cuenta       : '110401001',
     nombre              : 'MERCADERIA EN TRANSITO',
@@ -576,7 +579,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4a747f32-fe78-45b1-8552-f8952a36230a',
+
     id_empresa          : null,
     numero_cuenta       : '12',
     nombre              : 'ACTIVO NO CORRIENTE',
@@ -589,7 +592,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '25109962-53cf-45b0-a56f-096344318601',
+
     id_empresa          : null,
     numero_cuenta       : '1201',
     nombre              : 'INVERSIONES',
@@ -602,7 +605,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '29c69574-dea1-47f6-9675-eb900bc7204b',
+
     id_empresa          : null,
     numero_cuenta       : '120101',
     nombre              : 'INVERSIONES',
@@ -615,7 +618,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e3861ad9-9051-404b-be75-0afd1c433e7c',
+
     id_empresa          : null,
     numero_cuenta       : '120101001',
     nombre              : 'ACCIONES COTEL',
@@ -628,7 +631,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '58b23bd5-fa4b-4434-9016-d96600f78f5f',
+
     id_empresa          : null,
     numero_cuenta       : '120101002',
     nombre              : 'ACTIVOS INTANGIBLES',
@@ -641,7 +644,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2ce0e0ff-6030-4d58-af73-f76ce19bb1b7',
+
     id_empresa          : null,
     numero_cuenta       : '1202',
     nombre              : 'ACTIVO FIJO',
@@ -654,7 +657,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8e48e403-6ba5-4f42-990d-90d98624d708',
+
     id_empresa          : null,
     numero_cuenta       : '120201',
     nombre              : 'TERRENOS',
@@ -667,7 +670,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c0e001aa-117b-403d-bdcc-d6be87410b66',
+
     id_empresa          : null,
     numero_cuenta       : '120201001',
     nombre              : 'TERRENOS',
@@ -680,7 +683,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '3f28f824-b272-4110-97ba-4b828fa32e6c',
+
     id_empresa          : null,
     numero_cuenta       : '120202',
     nombre              : 'EDIFICIOS Y CONSTRUCCIONES',
@@ -693,7 +696,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'efba165b-7219-48a5-b724-0787fb38775f',
+
     id_empresa          : null,
     numero_cuenta       : '120202001',
     nombre              : 'EDIFICIOS Y CONSTRUCCIONES',
@@ -706,7 +709,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '654d26b9-f282-4406-bad9-569cf5bbd5c2',
+
     id_empresa          : null,
     numero_cuenta       : '120203',
     nombre              : 'DEP. ACUM. EDIFICIOS Y CONTRUCCIONES',
@@ -719,7 +722,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9455887e-d430-477d-a571-f0f1355e0114',
+
     id_empresa          : null,
     numero_cuenta       : '120203001',
     nombre              : 'DEP. ACUM. EDIFICIOS Y CONSTRUCCIONES',
@@ -732,7 +735,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '90fdf560-94d0-4b42-b1f5-295da34ddbbc',
+
     id_empresa          : null,
     numero_cuenta       : '120204',
     nombre              : 'MUEBLES Y ENSERES',
@@ -745,7 +748,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'cd907f3e-6165-4ea7-a009-9aae7a958714',
+
     id_empresa          : null,
     numero_cuenta       : '120204001',
     nombre              : 'MUEBLES Y ENSERES',
@@ -758,7 +761,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '45a199da-9389-40cc-b6ee-97089bffb3dd',
+
     id_empresa          : null,
     numero_cuenta       : '120205',
     nombre              : 'DEP. ACUM. MUEBLES Y ENSERES',
@@ -771,7 +774,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0e6b477a-1300-4d3b-a719-17c9e083c3a4',
+
     id_empresa          : null,
     numero_cuenta       : '120205001',
     nombre              : 'DEP. ACUM. MUEBLES Y ENSERES',
@@ -784,7 +787,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd82aa587-37f4-4678-8b9c-b7a122adccce',
+
     id_empresa          : null,
     numero_cuenta       : '120206',
     nombre              : 'MAQUINARIA Y EQUIPO',
@@ -797,7 +800,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e8637429-703d-472f-876c-1168c192d5fd',
+
     id_empresa          : null,
     numero_cuenta       : '120206001',
     nombre              : 'MAQUINARIA, EQUIPO E INSTALACIONES',
@@ -810,7 +813,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'cf777804-258a-4155-a805-ca620c8191d3',
+
     id_empresa          : null,
     numero_cuenta       : '120207',
     nombre              : 'DEP.ACUM. MAQUINARIA Y EQUIPO',
@@ -823,7 +826,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'dc9a0b27-13c5-45da-b98c-e0a9ee682541',
+
     id_empresa          : null,
     numero_cuenta       : '120207001',
     nombre              : 'DEP. ACUM. MAQUINARIA, EQUIPO E INSTALACIONES',
@@ -836,7 +839,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0a29424e-c34b-440d-82c1-f73461190569',
+
     id_empresa          : null,
     numero_cuenta       : '120208',
     nombre              : 'VEHICULOS',
@@ -849,7 +852,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '36b6eeaa-d5b3-49f9-b960-946c726ec540',
+
     id_empresa          : null,
     numero_cuenta       : '120208001',
     nombre              : 'VEHICULOS',
@@ -862,7 +865,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '765524c1-a0ff-45da-aedd-3f3fad92bf10',
+
     id_empresa          : null,
     numero_cuenta       : '120209',
     nombre              : 'DEP. ACUM. VEHICULOS',
@@ -875,7 +878,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c89c57fe-3921-498b-b6bb-ea21ff265f54',
+
     id_empresa          : null,
     numero_cuenta       : '120209001',
     nombre              : 'DEP. ACUM. VEHICULOS',
@@ -888,7 +891,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8528479a-49d1-41a0-a321-dd5895277c40',
+
     id_empresa          : null,
     numero_cuenta       : '120210',
     nombre              : 'HERRAMIENTAS',
@@ -901,7 +904,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '205c6292-6443-45b3-b696-3b922fe763c7',
+
     id_empresa          : null,
     numero_cuenta       : '120210001',
     nombre              : 'HERREMIENTAS',
@@ -914,7 +917,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '473c7089-4c67-49af-9b02-b8db1265a1f9',
+
     id_empresa          : null,
     numero_cuenta       : '120211',
     nombre              : 'DEP. ACUM. HERRAMIENTAS',
@@ -927,7 +930,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '506ab6c9-15a4-43e1-9758-937139573fb2',
+
     id_empresa          : null,
     numero_cuenta       : '120211001',
     nombre              : 'DEP. ACUM. HERREMIENTAS',
@@ -940,7 +943,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2aca5428-20c2-4145-a26c-b3cdad287190',
+
     id_empresa          : null,
     numero_cuenta       : '120212',
     nombre              : 'EQUIPOS DE COMPUTACION',
@@ -953,7 +956,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f2a5acdd-da80-4bc4-96bc-ceb9eea22205',
+
     id_empresa          : null,
     numero_cuenta       : '120212001',
     nombre              : 'EQUIPOS DE COMPUTACION',
@@ -966,7 +969,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0e97ba80-003c-4525-afe2-852625f053af',
+
     id_empresa          : null,
     numero_cuenta       : '120213',
     nombre              : 'DEP. ACUM. EQUIPOS DE COMPUTACION',
@@ -979,7 +982,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '03c914c6-850a-4704-bac1-0be4ce1136ea',
+
     id_empresa          : null,
     numero_cuenta       : '120213001',
     nombre              : 'DEP. ACUM. EQUIPOS DE COMPUTACION',
@@ -992,7 +995,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ce14fd19-e181-4639-a62d-b2494e1eced2',
+
     id_empresa          : null,
     numero_cuenta       : '1203',
     nombre              : 'ACTIVO DIFERIDO',
@@ -1005,7 +1008,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '3f9616c2-2bde-4056-bcd9-96c200632ee6',
+
     id_empresa          : null,
     numero_cuenta       : '120301',
     nombre              : 'GASTOS PAGADOS POR ADELANTADO',
@@ -1018,7 +1021,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'afb63ee2-7ea8-45d0-8ed8-7b5330394a88',
+
     id_empresa          : null,
     numero_cuenta       : '120301001',
     nombre              : 'GASTOS PAGADOS POR ADELANTADO',
@@ -1031,7 +1034,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '5cb95c30-18b7-482c-a184-e9a9a98175ca',
+
     id_empresa          : null,
     numero_cuenta       : '120302',
     nombre              : 'GASTOS DE ORGANIZACION',
@@ -1044,7 +1047,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '6d093be9-1633-4485-adf8-6895825a3ecc',
+
     id_empresa          : null,
     numero_cuenta       : '120302001',
     nombre              : 'ORGANIZACION Y CONSTITUCION',
@@ -1057,7 +1060,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0be17a3a-eb30-4963-914b-dab860e5718d',
+
     id_empresa          : null,
     numero_cuenta       : '120303',
     nombre              : 'AMORT. ACUM. ORGANIZACION Y CONSTITUCION',
@@ -1070,7 +1073,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2b9dd6a8-2123-476f-b9cb-a266a6d0887a',
+
     id_empresa          : null,
     numero_cuenta       : '120303001',
     nombre              : 'AMORT. ACUM. ORGANIZACION Y CONSTITUCION',
@@ -1083,7 +1086,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '3822f566-a505-410d-88c7-20919e4b5449',
+
     id_empresa          : null,
     numero_cuenta       : '1204',
     nombre              : 'OTROS ACTIVOS',
@@ -1096,7 +1099,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ec99e553-9ede-48de-8465-6765a071d28c',
+
     id_empresa          : null,
     numero_cuenta       : '120401',
     nombre              : 'OTROS ACTIVOS',
@@ -1109,7 +1112,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'dea742c4-0008-47ac-a8d3-6aa8aa36d143',
+
     id_empresa          : null,
     numero_cuenta       : '120401001',
     nombre              : 'DEPOSITOS EN GARANTIA',
@@ -1122,7 +1125,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9597599c-ef74-43da-83f8-c3aa4dff1433',
+
     id_empresa          : null,
     numero_cuenta       : '2',
     nombre              : 'PASIVO',
@@ -1135,7 +1138,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '00952e7e-9c32-4a28-98d7-e753c416fbdd',
+
     id_empresa          : null,
     numero_cuenta       : '21',
     nombre              : 'PASIVO CORRIENTE',
@@ -1148,7 +1151,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'fe2297c7-f729-44ea-a8b1-a0eb8c4c2c00',
+
     id_empresa          : null,
     numero_cuenta       : '2101',
     nombre              : 'PASIVO EXIGIBLE',
@@ -1161,7 +1164,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '6ef15fc1-3e29-43ec-bb9b-af534eba413d',
+
     id_empresa          : null,
     numero_cuenta       : '210101',
     nombre              : 'CUENTAS POR PAGAR M/N',
@@ -1174,7 +1177,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '661c2afc-8dac-4963-85e2-8c1348ab7a06',
+
     id_empresa          : null,
     numero_cuenta       : '210101001',
     nombre              : 'CUENTAS POR PAGAR M/N',
@@ -1187,7 +1190,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e48b7861-78c9-480b-8a3f-a43a9bb55199',
+
     id_empresa          : null,
     numero_cuenta       : '210102',
     nombre              : 'CUENTAS POR PAGAR M/E',
@@ -1200,7 +1203,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b6e8c4e9-28c6-4662-96e6-644bb4e60066',
+
     id_empresa          : null,
     numero_cuenta       : '210102001',
     nombre              : 'CUENTAS POR PAGAR M/E',
@@ -1213,7 +1216,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '912a8d0d-9404-443f-9b9d-a19b2717229c',
+
     id_empresa          : null,
     numero_cuenta       : '210103',
     nombre              : 'PROVEEDORES EXTERIOR POR PAGAR',
@@ -1226,7 +1229,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b27ef823-2d74-4b65-91a9-6a3564012ea2',
+
     id_empresa          : null,
     numero_cuenta       : '210104',
     nombre              : 'PROVEEDORES LOCALES POR PAGAR',
@@ -1239,7 +1242,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0d706d06-bf2f-4380-a7a5-30355f13d324',
+
     id_empresa          : null,
     numero_cuenta       : '210105',
     nombre              : 'SUELDOS Y SALARIOS POR PAGAR',
@@ -1252,7 +1255,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '26361ca7-7313-4aec-995a-d503f0755d49',
+
     id_empresa          : null,
     numero_cuenta       : '210105001',
     nombre              : 'SUELDOS Y SALARIOS POR PAGAR',
@@ -1265,7 +1268,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9bed2f96-7ade-41bd-b4f7-6e9446560915',
+
     id_empresa          : null,
     numero_cuenta       : '210106',
     nombre              : 'AGUINALDOS POR PAGAR',
@@ -1278,7 +1281,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '780642f1-6625-4a78-9c86-912efd1bdbac',
+
     id_empresa          : null,
     numero_cuenta       : '210106001',
     nombre              : 'AGUINALDOS POR PAGAR',
@@ -1291,7 +1294,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '510b59a3-4592-4b2f-9219-05d7907039aa',
+
     id_empresa          : null,
     numero_cuenta       : '210107',
     nombre              : 'BENEFICIOS SOCIALES Y OTROS POR PAGAR',
@@ -1304,7 +1307,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '22041b54-78fe-4a4f-b9db-e67c01cc95f3',
+
     id_empresa          : null,
     numero_cuenta       : '210107001',
     nombre              : 'BENEFICIOS SOCIALES Y OTROS POR PAGAR',
@@ -1317,7 +1320,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f1927950-abab-4b23-93b3-5d1daf9838b7',
+
     id_empresa          : null,
     numero_cuenta       : '210108',
     nombre              : 'HONORARIOS PROFESIONALES POR PAGAR',
@@ -1330,7 +1333,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '725432cd-bca3-4137-ad19-e34a61e7ced9',
+
     id_empresa          : null,
     numero_cuenta       : '210108001',
     nombre              : 'HONORARIOS PROFESIONALES POR PAGAR',
@@ -1343,7 +1346,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '5a7dbf31-4a0d-4466-98bb-9677a9c31218',
+
     id_empresa          : null,
     numero_cuenta       : '210109',
     nombre              : 'IMPUESTO IVA DEBITO FISCAL',
@@ -1356,7 +1359,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '90c070fb-3390-4ef5-81fd-ea8491a16a85',
+
     id_empresa          : null,
     numero_cuenta       : '210109001',
     nombre              : 'DEBITO FISCAL IVA',
@@ -1369,7 +1372,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8eb47faa-a52c-4af1-9e2f-1625c11d7593',
+
     id_empresa          : null,
     numero_cuenta       : '210109002',
     nombre              : 'IVA POR PAGAR',
@@ -1382,7 +1385,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'bddfb84e-b6dc-474d-8749-1d786064ed19',
+
     id_empresa          : null,
     numero_cuenta       : '210110',
     nombre              : 'IMPUESTO A LAS UTILIDADES',
@@ -1395,7 +1398,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '64dafa54-d163-4e87-bd07-9c901b9c1b5f',
+
     id_empresa          : null,
     numero_cuenta       : '210110001',
     nombre              : 'I.U.E. POR PAGAR',
@@ -1408,7 +1411,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ac07bc3e-82d4-437d-b9b2-f2ac4433490c',
+
     id_empresa          : null,
     numero_cuenta       : '210111',
     nombre              : 'IMPUESTOS Y PATENTES POR PAGAR',
@@ -1421,7 +1424,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e91b5d04-ada0-4c0a-986b-005434792143',
+
     id_empresa          : null,
     numero_cuenta       : '210111001',
     nombre              : 'IT POR PAGAR',
@@ -1434,7 +1437,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '3d2828d5-62f2-4f43-81fc-0701d31090d6',
+
     id_empresa          : null,
     numero_cuenta       : '210111002',
     nombre              : 'IMPUESTO REGIMEN COMPLEMENTARIO RC-IVA',
@@ -1447,7 +1450,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f87a94ff-1f3a-4b0a-8ec1-4b5bc4d7e67d',
+
     id_empresa          : null,
     numero_cuenta       : '210111003',
     nombre              : 'I.U.E. RETENCIONES POR PAGAR (SERVICIOS)',
@@ -1460,7 +1463,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'bf56abc4-0ade-44bc-bb7d-aa5abb29a730',
+
     id_empresa          : null,
     numero_cuenta       : '210111004',
     nombre              : 'I.T. RETENCIONES POR PAGAR (SERVICIOS)',
@@ -1473,7 +1476,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '515bff47-1027-49a9-bc98-dcd35dbed82d',
+
     id_empresa          : null,
     numero_cuenta       : '210111005',
     nombre              : 'I.U.E. RETENCIONES POR PAGAR (COMPRAS)',
@@ -1486,7 +1489,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f1155c91-5ca1-447a-8660-96bc44532d5d',
+
     id_empresa          : null,
     numero_cuenta       : '210111006',
     nombre              : 'I.T. RETENCIONES POR PAGAR (COMPRAS)',
@@ -1499,7 +1502,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'aa89ce3d-94fe-4f9e-a8ef-31f1e010d42c',
+
     id_empresa          : null,
     numero_cuenta       : '210111007',
     nombre              : 'IMPUESTO SOBRE INMUEBLES POR PAGAR',
@@ -1512,7 +1515,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '7901b585-a10e-4276-ad06-7d9bcdb657e8',
+
     id_empresa          : null,
     numero_cuenta       : '210111008',
     nombre              : 'PATENTES MUNICIPALES POR PAGAR',
@@ -1525,7 +1528,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '1db9539a-710e-482e-acc3-b26e495d7daa',
+
     id_empresa          : null,
     numero_cuenta       : '210112',
     nombre              : 'CARGAS SOCIALES POR PAGAR',
@@ -1538,7 +1541,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '34a23690-e3f6-490a-8164-8f3c3d5b4ccb',
+
     id_empresa          : null,
     numero_cuenta       : '210112001',
     nombre              : 'CAJA DE SALUD CORDES',
@@ -1551,7 +1554,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '46948382-db3d-4a11-a4a3-8cccaab6f12e',
+
     id_empresa          : null,
     numero_cuenta       : '210112002',
     nombre              : 'AFP FUTURO DE BOLIVIA',
@@ -1564,7 +1567,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '7c0418ae-88cb-4624-841c-cf0777afeb25',
+
     id_empresa          : null,
     numero_cuenta       : '210112003',
     nombre              : 'AFP BBV PREVISION',
@@ -1577,7 +1580,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '6df625df-47a3-4067-b26d-811e9e1d1379',
+
     id_empresa          : null,
     numero_cuenta       : '210112004',
     nombre              : 'DEBITO FISCAL IVA DIFERIDO',
@@ -1590,7 +1593,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '91799a1d-52e3-4b16-8160-551332b148f8',
+
     id_empresa          : null,
     numero_cuenta       : '210112005',
     nombre              : 'OTRAS CARGAS SOCIALES POR PAGAR',
@@ -1603,7 +1606,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '7ae9de7f-d9b0-4edb-81c4-9e5d2944d7a8',
+
     id_empresa          : null,
     numero_cuenta       : '210112006',
     nombre              : 'APORTE PATRONAL AFPS POR PAGAR',
@@ -1616,7 +1619,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd25142e5-2eef-4bbc-bd9f-d7e12789114f',
+
     id_empresa          : null,
     numero_cuenta       : '22',
     nombre              : 'PASIVO NO CORRIENTES',
@@ -1629,7 +1632,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'dcbe7017-d3c2-47df-8cbf-a2f3a0f74572',
+
     id_empresa          : null,
     numero_cuenta       : '2201',
     nombre              : 'PASIVO EXIGIBLE A LARGO PLAZO',
@@ -1642,7 +1645,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '80c2ea54-80d3-4eaf-86e2-c16ba70f6cd2',
+
     id_empresa          : null,
     numero_cuenta       : '220101',
     nombre              : 'OBLIGACIONES FINANCIERAS',
@@ -1655,7 +1658,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '014af67c-e2e6-4935-9a3b-d794b58ef8a7',
+
     id_empresa          : null,
     numero_cuenta       : '220101001',
     nombre              : 'SERVICIOS BASICOS POR PAGAR',
@@ -1668,7 +1671,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '021ff36f-45b0-4136-b968-1e4e7b5ba7b6',
+
     id_empresa          : null,
     numero_cuenta       : '220101002',
     nombre              : 'PRESTAMOS DOCUMENTARIOS',
@@ -1681,7 +1684,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c29e3268-8b88-4398-8635-4cd1e6fd73f9',
+
     id_empresa          : null,
     numero_cuenta       : '220101003',
     nombre              : 'PRESTAMOS POR PAGAR',
@@ -1694,7 +1697,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c57f2aef-d65b-460c-9501-140d3d7222c8',
+
     id_empresa          : null,
     numero_cuenta       : '2202',
     nombre              : 'PREVISIONES O PROVISIONES',
@@ -1707,7 +1710,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f884fd3c-61be-445f-956f-79c1d7fa5f28',
+
     id_empresa          : null,
     numero_cuenta       : '220201',
     nombre              : 'PREVISIONES Y PROVISIONES',
@@ -1720,7 +1723,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b6a09949-82e6-4473-9b38-22e948adaa2e',
+
     id_empresa          : null,
     numero_cuenta       : '220201001',
     nombre              : 'PREVISION BENEFICIOS SOCIALES',
@@ -1733,7 +1736,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '0b812819-b659-4af5-983a-68da6648f27e',
+
     id_empresa          : null,
     numero_cuenta       : '220201002',
     nombre              : 'PROVISION AGUINALDOS',
@@ -1746,7 +1749,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '109f88eb-b6d3-486d-9279-fff2b444e55e',
+
     id_empresa          : null,
     numero_cuenta       : '3',
     nombre              : 'PATRIMONIO',
@@ -1759,7 +1762,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ddee98a5-ed89-49e0-8ab1-4471a6564c67',
+
     id_empresa          : null,
     numero_cuenta       : '31',
     nombre              : 'PATRIMONIO',
@@ -1772,7 +1775,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '619957d6-fe72-4348-9979-ae298724b4db',
+
     id_empresa          : null,
     numero_cuenta       : '3101',
     nombre              : 'PATRIMONIO',
@@ -1785,7 +1788,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8257c451-d919-4cba-9f46-bcecec1cd7f5',
+
     id_empresa          : null,
     numero_cuenta       : '310101',
     nombre              : 'CAPITAL SOCIAL',
@@ -1798,7 +1801,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c6f53c3d-cdc8-4aaa-a59e-610adbce0d63',
+
     id_empresa          : null,
     numero_cuenta       : '310101001',
     nombre              : 'CAPITAL SOCIAL',
@@ -1811,7 +1814,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2739d6d4-c02b-4f82-b1aa-95aaf05434f3',
+
     id_empresa          : null,
     numero_cuenta       : '310102',
     nombre              : 'APORTES POR CAPITALIZAR',
@@ -1824,7 +1827,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'a80b06bc-d5a5-4ecb-aa63-b66795e720c7',
+
     id_empresa          : null,
     numero_cuenta       : '310103',
     nombre              : 'AJUSTE DE CAPITAL',
@@ -1837,7 +1840,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f9b2b851-e72c-4e96-a1c9-5094d2ab7236',
+
     id_empresa          : null,
     numero_cuenta       : '310103001',
     nombre              : 'AJUSTE DE CAPITAL',
@@ -1850,7 +1853,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd34fe030-4d32-4dd7-b2e3-b7b876f9c554',
+
     id_empresa          : null,
     numero_cuenta       : '3102',
     nombre              : 'RESERVAS',
@@ -1863,7 +1866,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b81fd7f8-5a75-4ab4-b51d-a304c048f3a5',
+
     id_empresa          : null,
     numero_cuenta       : '310201',
     nombre              : 'RESERVA LEGAL',
@@ -1876,7 +1879,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c19a8b20-d0d9-4edb-8b7a-45eadd33a77b',
+
     id_empresa          : null,
     numero_cuenta       : '310201001',
     nombre              : 'RESERVA LEGAL',
@@ -1889,7 +1892,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f2a1431d-ddda-41b8-b77e-2925c5634ceb',
+
     id_empresa          : null,
     numero_cuenta       : '310202',
     nombre              : 'RESERVA PARA REVALUO ACTIVO FIJO',
@@ -1902,7 +1905,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '13f8d8bf-6445-4c15-b0f4-59e7597da3e4',
+
     id_empresa          : null,
     numero_cuenta       : '310202001',
     nombre              : 'RESERVA PARA REVALUO ACTIVO FIJO',
@@ -1915,7 +1918,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f6e70094-3c31-439d-a621-e9890694a233',
+
     id_empresa          : null,
     numero_cuenta       : '310203',
     nombre              : 'AJUSTE DE RESERVAS PATRIMONIALES',
@@ -1928,7 +1931,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '246e1ea0-dd7c-4245-a79c-f5b981b4e7d9',
+
     id_empresa          : null,
     numero_cuenta       : '310203001',
     nombre              : 'AJUSTE DE RESERVAS PATRIMONIALES',
@@ -1941,7 +1944,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '18748e46-b3d6-43be-bc83-6d246a5d15ae',
+
     id_empresa          : null,
     numero_cuenta       : '3103',
     nombre              : 'AJUSTES AL PATRIMONIO',
@@ -1954,7 +1957,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ce38c635-48ac-4fbf-8edb-c4ea5a15a201',
+
     id_empresa          : null,
     numero_cuenta       : '310301',
     nombre              : 'AJUSTE GLOBAL DEL PATRIMONIO',
@@ -1967,7 +1970,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8a660d9b-4734-4d7e-aa0e-6982cca09941',
+
     id_empresa          : null,
     numero_cuenta       : '310301001',
     nombre              : 'AJUSTE GLOBAL DEL PATRIMONIO',
@@ -1980,7 +1983,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '1bfc1c45-00d8-484a-a13d-adb7280eecb1',
+
     id_empresa          : null,
     numero_cuenta       : '3104',
     nombre              : 'RESULTADOS',
@@ -1993,7 +1996,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '1871a174-bd30-49ff-a35b-98d66b7998ab',
+
     id_empresa          : null,
     numero_cuenta       : '310401',
     nombre              : 'RESULTADOS ACUMULADOS',
@@ -2006,7 +2009,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '86c2003f-9024-45dd-986c-c7fd47797dc6',
+
     id_empresa          : null,
     numero_cuenta       : '310401001',
     nombre              : 'RESULTADOS ACUMULADOS',
@@ -2019,7 +2022,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e5f73eea-a216-4162-8f6d-8075c0a0f87a',
+
     id_empresa          : null,
     numero_cuenta       : '310402',
     nombre              : 'RESULTADO DEL PERIODO',
@@ -2032,7 +2035,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '982ccb81-71f7-41e2-9153-6c600d3aff2d',
+
     id_empresa          : null,
     numero_cuenta       : '310402001',
     nombre              : 'RESULTADO DEL PERIODO',
@@ -2045,7 +2048,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'de95595d-88cf-4d15-9506-cf7a380b1fa1',
+
     id_empresa          : null,
     numero_cuenta       : '4',
     nombre              : 'INGRESO',
@@ -2058,7 +2061,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '42653e67-0b53-47bd-b9e7-cb47a7c4f36c',
+
     id_empresa          : null,
     numero_cuenta       : '41',
     nombre              : 'INGRESOS',
@@ -2071,7 +2074,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '7e2e5273-0b39-431e-b130-782a1ff902ec',
+
     id_empresa          : null,
     numero_cuenta       : '4101',
     nombre              : 'INGRESOS OPERATIVOS',
@@ -2084,7 +2087,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '700c0a5b-efd4-43a6-b5e8-61fad578ffb2',
+
     id_empresa          : null,
     numero_cuenta       : '410101',
     nombre              : 'VENTAS Y/O SERVICIOS',
@@ -2097,7 +2100,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ee01268a-2c9a-468d-bb25-589687819138',
+
     id_empresa          : null,
     numero_cuenta       : '410101001',
     nombre              : 'VENTA DE MERCADERIAS',
@@ -2110,7 +2113,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'a0435daa-132b-4243-bb6b-17f2710c4a90',
+
     id_empresa          : null,
     numero_cuenta       : '4102',
     nombre              : 'INGRESOS NO OPERATIVOS',
@@ -2123,7 +2126,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ae5f43ca-8e59-4ef6-9c36-7a8f7801214a',
+
     id_empresa          : null,
     numero_cuenta       : '410201',
     nombre              : 'OTROS INGRESOS',
@@ -2136,7 +2139,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e67a91ec-d1d3-4f38-9629-38e74fa780f7',
+
     id_empresa          : null,
     numero_cuenta       : '410201001',
     nombre              : 'OTROS INGRESOS',
@@ -2149,7 +2152,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '53a5a8cb-2b1e-4395-8815-c110feae868d',
+
     id_empresa          : null,
     numero_cuenta       : '410201002',
     nombre              : 'ALQUILERES PERCIBIDOS',
@@ -2162,7 +2165,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '89a8d796-8588-45c6-a598-dd38c60eab79',
+
     id_empresa          : null,
     numero_cuenta       : '4103',
     nombre              : 'PRODUCTOS FINANCIEROS',
@@ -2175,7 +2178,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '320a067b-059e-415a-a758-df1664ca3628',
+
     id_empresa          : null,
     numero_cuenta       : '410301',
     nombre              : 'PRODUCTOS FINANCIEROS',
@@ -2188,7 +2191,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '75b4c71c-950c-44cc-97e7-aee66dee3ea3',
+
     id_empresa          : null,
     numero_cuenta       : '410301001',
     nombre              : 'INTERESES GANADOS',
@@ -2201,7 +2204,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '99f38182-de7e-4ae9-9eb2-8f894eafe29c',
+
     id_empresa          : null,
     numero_cuenta       : '4104',
     nombre              : 'INGRESOS NO MONETARIOS',
@@ -2214,7 +2217,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '1c14b8d3-e707-4e0b-b54a-2d2c6df4b8a0',
+
     id_empresa          : null,
     numero_cuenta       : '410401',
     nombre              : 'INGRESOS NO MONETARIOS',
@@ -2227,7 +2230,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4131a5fc-9ea4-4297-87d3-d826eaf4c4a8',
+
     id_empresa          : null,
     numero_cuenta       : '410401001',
     nombre              : 'AJUSTE POR INFLACION Y TENDENCIA DE BIENES',
@@ -2240,7 +2243,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '286dc14f-6e56-47fc-a55b-a95609c7b4e0',
+
     id_empresa          : null,
     numero_cuenta       : '410401002',
     nombre              : 'DIFERENCIA DE CAMBIO Y REDONDEO',
@@ -2253,7 +2256,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'edc76935-31dd-4bab-b07d-3087ea86fdd2',
+
     id_empresa          : null,
     numero_cuenta       : '410401003',
     nombre              : 'MANTENIMIENTO DE VALOR',
@@ -2266,7 +2269,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e214d913-2a39-4672-8a40-cd2337843353',
+
     id_empresa          : null,
     numero_cuenta       : '5',
     nombre              : 'GASTO',
@@ -2279,7 +2282,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '1a79dff9-6cbe-4904-b97c-3a477da643fc',
+
     id_empresa          : null,
     numero_cuenta       : '51',
     nombre              : 'GASTOS OPERATIVOS',
@@ -2292,7 +2295,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd7bae627-35f6-4c75-bb21-8fc78bd11e7c',
+
     id_empresa          : null,
     numero_cuenta       : '5101',
     nombre              : 'COSTOS DE VENTAS',
@@ -2305,7 +2308,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '83bab900-7165-4f65-ad79-1f90239deaa5',
+
     id_empresa          : null,
     numero_cuenta       : '510101',
     nombre              : 'COSTOS DE VENTAS Y/O SERVICIOS',
@@ -2318,7 +2321,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '5b0f9e2c-ce20-4dcc-92fc-0496fcf7d88f',
+
     id_empresa          : null,
     numero_cuenta       : '510101001',
     nombre              : 'COSTO DE VENTAS',
@@ -2331,7 +2334,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '830b5313-7569-4f9d-a501-5ec423324252',
+
     id_empresa          : null,
     numero_cuenta       : '5102',
     nombre              : 'GASTOS ADMINISTRATIVOS',
@@ -2344,7 +2347,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ee4a81e2-a726-43d9-ae2e-26daa1604926',
+
     id_empresa          : null,
     numero_cuenta       : '510201',
     nombre              : 'REMUNERACIONES',
@@ -2357,7 +2360,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c38932b4-2016-4782-bcba-e2aa29f775a5',
+
     id_empresa          : null,
     numero_cuenta       : '510201001',
     nombre              : 'SUELDOS Y SALARIOS',
@@ -2370,7 +2373,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'a7fd0718-9632-41a9-bb3b-99c1492248dd',
+
     id_empresa          : null,
     numero_cuenta       : '510201002',
     nombre              : 'AGUINALDOS',
@@ -2383,7 +2386,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9b2107a9-1def-4bd1-9802-59e6122068d6',
+
     id_empresa          : null,
     numero_cuenta       : '510201003',
     nombre              : 'BENEFICIOS SOCIALES',
@@ -2396,7 +2399,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '8e8bd6a7-58f3-4dc5-a614-6c1eac64f7a3',
+
     id_empresa          : null,
     numero_cuenta       : '510201004',
     nombre              : 'DESAHUCIOS',
@@ -2409,7 +2412,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '1554b2d3-6c8e-4597-ae9e-a7952e4007f2',
+
     id_empresa          : null,
     numero_cuenta       : '510201005',
     nombre              : 'ALQUILER DE EQUIPOS DE COMUNICACION',
@@ -2422,7 +2425,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'cdf6d7f4-29cb-40f1-b3dc-85f6668a68f6',
+
     id_empresa          : null,
     numero_cuenta       : '510201006',
     nombre              : 'VACACIONES',
@@ -2435,7 +2438,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '5d506097-d1e0-4a60-b4d8-59fa0a2ee460',
+
     id_empresa          : null,
     numero_cuenta       : '510201007',
     nombre              : 'HONORARIOS PROFESIONALES',
@@ -2448,7 +2451,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'a1dbb82b-113d-4b94-afbe-c37bbdfda404',
+
     id_empresa          : null,
     numero_cuenta       : '510201008',
     nombre              : 'SUELDOS Y SALARIOS ADM',
@@ -2461,7 +2464,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '5f1c9f78-4b12-4749-87bd-3371ec8fa754',
+
     id_empresa          : null,
     numero_cuenta       : '510201009',
     nombre              : 'DOTACION UNIFORMES Y EQ. DE CONTINGENCIA',
@@ -2474,7 +2477,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b1f434ce-85e5-4c0d-b9b2-724bd57cdad8',
+
     id_empresa          : null,
     numero_cuenta       : '510202',
     nombre              : 'IMPUESTOS, PATENTES Y CARGAS SOCIALES',
@@ -2487,7 +2490,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '162ef420-9e04-4ace-8fa4-ff08b5c2d28b',
+
     id_empresa          : null,
     numero_cuenta       : '510202001',
     nombre              : 'IMPUESTO A LAS UTILIDADES',
@@ -2500,7 +2503,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd0207758-d103-4a2c-929f-936ad15afb17',
+
     id_empresa          : null,
     numero_cuenta       : '510202002',
     nombre              : 'IMPUESTO A LAS TRANSACCIONES',
@@ -2513,7 +2516,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '875b6271-99da-46b5-baa0-01e688ad92cd',
+
     id_empresa          : null,
     numero_cuenta       : '510202003',
     nombre              : 'IMPUESTOS NO DEDUCIBLES',
@@ -2526,7 +2529,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '92f20a77-e5cf-4611-ace3-9e3fd1d30a03',
+
     id_empresa          : null,
     numero_cuenta       : '510202004',
     nombre              : 'MULTAS E INTERESES SOBRE IMPUESTOS',
@@ -2539,7 +2542,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '20187b3a-4894-4ccf-9d25-02f6c0073abb',
+
     id_empresa          : null,
     numero_cuenta       : '510202005',
     nombre              : 'TASAS Y PATENTES MUNICIPALES',
@@ -2552,7 +2555,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2d8dcf43-0c59-402a-a21e-66114419c286',
+
     id_empresa          : null,
     numero_cuenta       : '510202006',
     nombre              : 'CARGAS SOCIALES',
@@ -2565,7 +2568,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '90431d9d-721b-4467-8a3f-f521e64b5c93',
+
     id_empresa          : null,
     numero_cuenta       : '510202007',
     nombre              : 'SUBSIDIOS VARIOS',
@@ -2578,7 +2581,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '405a2fbb-612e-4f97-8e24-9bf4261c1946',
+
     id_empresa          : null,
     numero_cuenta       : '510203',
     nombre              : 'ALQUILERES Y MANTENIMIENTOS',
@@ -2591,7 +2594,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c0fedbb3-8485-4113-8874-79b52b99ce48',
+
     id_empresa          : null,
     numero_cuenta       : '510203001',
     nombre              : 'ALQUILER DE OFICINAS',
@@ -2604,7 +2607,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '6e50538d-429e-479e-a286-90c0c6d7fa91',
+
     id_empresa          : null,
     numero_cuenta       : '510203002',
     nombre              : 'MTTO EQ. DE COMPUTACION',
@@ -2617,7 +2620,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e92070f9-eba0-47df-8d8f-c892172ddfbc',
+
     id_empresa          : null,
     numero_cuenta       : '510203003',
     nombre              : 'MANTENIMIENTO DE OFICINAS',
@@ -2630,7 +2633,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '03113fff-a4b8-4651-9a9a-410b5bdbf0d6',
+
     id_empresa          : null,
     numero_cuenta       : '510203004',
     nombre              : 'MANTENIMIENTO DE VEHICULOS',
@@ -2643,7 +2646,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'bbd41a2f-583d-4d73-91da-5380573ec812',
+
     id_empresa          : null,
     numero_cuenta       : '510203005',
     nombre              : 'MTTO. DE EQUIPO E INSTALACIONES',
@@ -2656,7 +2659,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '207a0b72-8b88-44a3-addc-b8bb5a6c2528',
+
     id_empresa          : null,
     numero_cuenta       : '510204',
     nombre              : 'SERVICIOS BASICOS',
@@ -2669,7 +2672,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '807bd995-8629-402c-8a9c-af68d17c3f85',
+
     id_empresa          : null,
     numero_cuenta       : '510204001',
     nombre              : 'ENERGIA ELECTRICA',
@@ -2682,7 +2685,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'cb4ca182-21a4-4aed-b825-e1d9cf66334c',
+
     id_empresa          : null,
     numero_cuenta       : '510204002',
     nombre              : 'AGUA POTABLE',
@@ -2695,7 +2698,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c9a46a53-c26b-4997-9d18-ed1fcea7e686',
+
     id_empresa          : null,
     numero_cuenta       : '510204003',
     nombre              : 'SERVICIO DE COURRIER Y ENCOMIENDA',
@@ -2708,7 +2711,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '956c30d0-5d45-4a9a-bf23-3ca014169c3b',
+
     id_empresa          : null,
     numero_cuenta       : '510204004',
     nombre              : 'SERVICIO DE INTERNET Y CABLE',
@@ -2721,7 +2724,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'cff81aa8-90ab-42ad-be3f-742857f98ffc',
+
     id_empresa          : null,
     numero_cuenta       : '510204005',
     nombre              : 'SERVICIO DE LIMPIEZA',
@@ -2734,7 +2737,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '378d64f7-b9fb-4971-970e-c044411bd384',
+
     id_empresa          : null,
     numero_cuenta       : '510204006',
     nombre              : 'SERVICIO DE REFRIGERIO',
@@ -2747,7 +2750,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '31efbfc2-722e-4e1e-ba69-8afce6ba97a8',
+
     id_empresa          : null,
     numero_cuenta       : '510204007',
     nombre              : 'SERVICIO DE SEGURIDAD',
@@ -2760,7 +2763,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '15fe6c30-826a-46fb-baec-0884e80651c8',
+
     id_empresa          : null,
     numero_cuenta       : '510204008',
     nombre              : 'SERVICIO DE TELEFONIA - FIJA',
@@ -2773,7 +2776,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '999ae8a7-0022-4b00-b3cb-9b86f900bad2',
+
     id_empresa          : null,
     numero_cuenta       : '510204009',
     nombre              : 'SERVICIO DE TELEFONIA CELULAR',
@@ -2786,7 +2789,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'de832ee8-4933-485e-a4f2-6f1bc74d521b',
+
     id_empresa          : null,
     numero_cuenta       : '510204010',
     nombre              : 'SERVICIO DE TELEFONIA - COTAS',
@@ -2799,7 +2802,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b3c8644c-283c-4a53-8ae6-3881dc162f52',
+
     id_empresa          : null,
     numero_cuenta       : '510204011',
     nombre              : 'ALUMBRADO PUBLICO',
@@ -2812,7 +2815,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c0d10351-0839-4a8e-b1cf-41ed5629ae0f',
+
     id_empresa          : null,
     numero_cuenta       : '510204012',
     nombre              : 'ASEO URBANO',
@@ -2825,7 +2828,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f4962718-df9e-4c97-9612-8a6f5f24ba37',
+
     id_empresa          : null,
     numero_cuenta       : '510204013',
     nombre              : 'SERVICIOS BASICOS',
@@ -2838,7 +2841,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'aa4f5614-2805-4a70-8d4b-d4e88f652d9a',
+
     id_empresa          : null,
     numero_cuenta       : '510204014',
     nombre              : 'TASAS Y PATENTES MUNICIPALES',
@@ -2851,7 +2854,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '64eefa63-b304-4a71-8316-5449efaf3ef6',
+
     id_empresa          : null,
     numero_cuenta       : '510205',
     nombre              : 'MATERIALES, SUMINISTROS Y OTROS',
@@ -2864,7 +2867,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'cf7b8989-0dd7-4845-bbbf-4f0190f35b40',
+
     id_empresa          : null,
     numero_cuenta       : '510205001',
     nombre              : 'MATERIAL DE ESCRITORIO Y OFICINA',
@@ -2877,7 +2880,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '3bab2e19-5c92-42dc-b3dc-a7507a06498b',
+
     id_empresa          : null,
     numero_cuenta       : '510205002',
     nombre              : 'FOTOCOPIAS, FORMULARIOS Y FOTOGRAFIAS',
@@ -2890,7 +2893,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '24662172-03f4-41f0-b4f9-f74d506a20fb',
+
     id_empresa          : null,
     numero_cuenta       : '510205003',
     nombre              : 'COMBUSTIBLES Y LUBRICANTES',
@@ -2903,7 +2906,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '78c55798-958f-4766-b0da-1b7b3db84158',
+
     id_empresa          : null,
     numero_cuenta       : '510205004',
     nombre              : 'PASAJES DEL PERSONAL ADM',
@@ -2916,7 +2919,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '668246d8-36df-4f7e-9c98-80d3d85fbbdb',
+
     id_empresa          : null,
     numero_cuenta       : '510205005',
     nombre              : 'CUOTAS CAMARAS',
@@ -2929,7 +2932,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '58a5b543-ea77-4ff2-80dd-6f770472e3b9',
+
     id_empresa          : null,
     numero_cuenta       : '510206',
     nombre              : 'SEGUROS Y REASEGUROS',
@@ -2942,7 +2945,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b1221a7a-4ba2-4511-9e5e-df95cb87e354',
+
     id_empresa          : null,
     numero_cuenta       : '510206001',
     nombre              : 'SEGURO DE BIENES INMUEBLES',
@@ -2955,7 +2958,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9dfbae58-f91b-47e8-9cf6-095b1499b714',
+
     id_empresa          : null,
     numero_cuenta       : '510206002',
     nombre              : 'SEGURO DE VEHICULOS',
@@ -2968,7 +2971,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'abef0c8f-00e2-49f0-9721-307ba8b79617',
+
     id_empresa          : null,
     numero_cuenta       : '510206003',
     nombre              : 'SEGURO DE BIENES MUEBLES',
@@ -2981,7 +2984,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9aee9d12-827b-4715-8691-fcfaf6b81c47',
+
     id_empresa          : null,
     numero_cuenta       : '510206004',
     nombre              : 'SEGURO DE PERSONAS',
@@ -2994,7 +2997,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '753c2e91-72fe-4335-8f2e-46a2812c8a69',
+
     id_empresa          : null,
     numero_cuenta       : '510207',
     nombre              : 'VIAJES, HOSPEDAJES Y VIATICOS',
@@ -3007,7 +3010,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '9942c4c2-e222-46bd-9a3a-2c3c332489ec',
+
     id_empresa          : null,
     numero_cuenta       : '510207001',
     nombre              : 'TRANSPORTE AEREO',
@@ -3020,7 +3023,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4a2ba3c0-a295-4c06-8b3f-b5ba8fd23eb7',
+
     id_empresa          : null,
     numero_cuenta       : '510207002',
     nombre              : 'TRANSPORTE TERRESTRE',
@@ -3033,7 +3036,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'd9e04317-3a12-4d89-9a3e-37fafbe9cbf7',
+
     id_empresa          : null,
     numero_cuenta       : '510207003',
     nombre              : 'HOTELES Y HOSPEDAJES',
@@ -3046,7 +3049,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2735b02b-fe57-4fff-aa2f-e7ff08cbb7ec',
+
     id_empresa          : null,
     numero_cuenta       : '510207004',
     nombre              : 'VIATICOS',
@@ -3059,7 +3062,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '805f0d99-a2c6-43b8-97e6-afc3a9ab76b8',
+
     id_empresa          : null,
     numero_cuenta       : '510208',
     nombre              : 'DEPRECIACION DE ACTIVOS FIJOS',
@@ -3072,7 +3075,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4791e916-0fdc-4d86-8d57-0aac0ab63d14',
+
     id_empresa          : null,
     numero_cuenta       : '510208001',
     nombre              : 'DEPRECIACION EDIFICIOS Y CONSTRUCCIONES',
@@ -3085,7 +3088,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'e7a24767-93e5-4ad1-bb48-d6d18bad090c',
+
     id_empresa          : null,
     numero_cuenta       : '510208002',
     nombre              : 'DEPRECIACION MUEBLES Y ENSERES',
@@ -3098,7 +3101,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '96eb64d6-43f2-4a7b-987f-556b4f97b5ca',
+
     id_empresa          : null,
     numero_cuenta       : '510208003',
     nombre              : 'DEPRECIACION MAQUINARIA, EQUIPO E INSTALACIONES',
@@ -3111,7 +3114,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4e388883-f08b-42f8-ba71-364c5bf468c3',
+
     id_empresa          : null,
     numero_cuenta       : '510208004',
     nombre              : 'DEPRECIACION VEHICULOS',
@@ -3124,7 +3127,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'a363cc4a-70f1-4776-82aa-88965f624fb3',
+
     id_empresa          : null,
     numero_cuenta       : '510208005',
     nombre              : 'DEPRECIACION HERRAMIENTAS',
@@ -3137,7 +3140,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b49efcb0-666b-4caf-91a4-dcf5bd27199b',
+
     id_empresa          : null,
     numero_cuenta       : '510208006',
     nombre              : 'DEPRECIACION EQUIPOS DE COMPUTACION',
@@ -3150,7 +3153,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'edc8b97a-73a1-4c29-b4da-a9a00c5e00be',
+
     id_empresa          : null,
     numero_cuenta       : '510209',
     nombre              : 'GASTOS VARIOS',
@@ -3163,7 +3166,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'b4f30c29-8a1e-42fc-a11e-bcdd6bfb9147',
+
     id_empresa          : null,
     numero_cuenta       : '510209001',
     nombre              : 'TRAMITES LEGALES',
@@ -3176,7 +3179,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '84f3bda0-9615-4925-a4c2-50de62ad12ef',
+
     id_empresa          : null,
     numero_cuenta       : '510209002',
     nombre              : 'PERDIDA EN VENTA DE ACTIVOS FIJOS',
@@ -3189,7 +3192,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'a3becb68-e877-4f33-9859-5f91307638e3',
+
     id_empresa          : null,
     numero_cuenta       : '510209003',
     nombre              : 'OTROS GASTOS VARIOS',
@@ -3202,7 +3205,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '2f0ba529-44b8-41f9-bc25-b6d258c058db',
+
     id_empresa          : null,
     numero_cuenta       : '510209004',
     nombre              : 'AMORTIZACION ORGANIZACION Y CONTITUCION',
@@ -3215,7 +3218,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f8327c5b-5615-475a-b818-547161639089',
+
     id_empresa          : null,
     numero_cuenta       : '5103',
     nombre              : 'GASTOS DE VENTA',
@@ -3228,7 +3231,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '4abceff0-baae-4a39-9f72-e22a196124c4',
+
     id_empresa          : null,
     numero_cuenta       : '510301',
     nombre              : 'GASTOS DE VENTA',
@@ -3241,7 +3244,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '03a8109e-2c75-4798-bad9-4de1bc994482',
+
     id_empresa          : null,
     numero_cuenta       : '510301001',
     nombre              : 'GASTOS DE VENTAS',
@@ -3254,7 +3257,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'c957d385-213c-4e71-8506-642fe6af9bc8',
+
     id_empresa          : null,
     numero_cuenta       : '510301002',
     nombre              : 'PUBLICIDAD Y SUSCRIPCIONES',
@@ -3267,7 +3270,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '6665b22c-fc3c-4f72-9ed3-1c942ce400ca',
+
     id_empresa          : null,
     numero_cuenta       : '5104',
     nombre              : 'GASTOS FINANCIEROS',
@@ -3280,7 +3283,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '5c2a8682-558f-4016-a6e6-8aa4ebfd7443',
+
     id_empresa          : null,
     numero_cuenta       : '510401',
     nombre              : 'GASTOS FINANCIEROS',
@@ -3293,7 +3296,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '398d8f5d-abd5-4f1e-8bc6-f925723003a3',
+
     id_empresa          : null,
     numero_cuenta       : '510401001',
     nombre              : 'INTERESES Y COMISIONES BANCARIAS',
@@ -3306,7 +3309,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '6b130e96-ab88-4bc3-8057-140f3e74612e',
+
     id_empresa          : null,
     numero_cuenta       : '510401002',
     nombre              : 'INTERESES Y COMISIONES SOBRE PRESTAMOS',
@@ -3319,7 +3322,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '49dc0f86-2bab-4904-a984-12b00c1936df',
+
     id_empresa          : null,
     numero_cuenta       : '510401003',
     nombre              : 'IMPUESTO A LAS TRANSACCIONES FINANCIERAS',
@@ -3332,7 +3335,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'f3315bab-f7f6-402b-b2d9-167fe8730dbb',
+
     id_empresa          : null,
     numero_cuenta       : '5105',
     nombre              : 'GASTOS NO MONETARIOS',
@@ -3345,7 +3348,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '01dbf9a4-38c0-4b83-9997-6f440e73d0bb',
+
     id_empresa          : null,
     numero_cuenta       : '510501',
     nombre              : 'GASTOS NO MONETARIOS',
@@ -3358,7 +3361,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '6ef31434-73b4-428d-9ef6-75b684a19b49',
+
     id_empresa          : null,
     numero_cuenta       : '510501001',
     nombre              : 'AJUSTE POR INFLACION Y TENENCIA DE BIENES',
@@ -3371,7 +3374,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '10c1af85-398b-4fae-bba3-2ed103f30803',
+
     id_empresa          : null,
     numero_cuenta       : '510501002',
     nombre              : 'AJUSTE DIFERENCIA T/C Y REDONDEO',
@@ -3384,7 +3387,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'ccd454a1-6c16-4449-b2f2-17536cc78aa3',
+
     id_empresa          : null,
     numero_cuenta       : '510501003',
     nombre              : 'MANTENIMIENTO DE VALOR',
@@ -3397,7 +3400,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'be18b7d0-7be8-43da-99cd-8ea803ddd70c',
+
     id_empresa          : null,
     numero_cuenta       : '5106',
     nombre              : 'GANANCIAS Y PERDIDAS',
@@ -3410,7 +3413,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : '62ac78b9-6149-45a7-8255-1ca3242b50cb',
+
     id_empresa          : null,
     numero_cuenta       : '510601',
     nombre              : 'GANANCIAS Y PERDIDAS',
@@ -3423,7 +3426,7 @@ let items = [
     tipo_registro       : 'CONFIGURACION'
   },
   {
-    id                  : 'a89f0682-f59a-4495-9e15-d0dfc08ad815',
+
     id_empresa          : null,
     numero_cuenta       : '510601001',
     nombre              : 'GANANCIAS Y PERDIDAS',
@@ -3444,10 +3447,15 @@ const getChildren = (numeroCuenta) => {
   return items.filter(item => item.numero_cuenta_padre === numeroCuenta);
 };
 
-const insertChildrens = async (queryInterface, numeroCuenta) => {
+const insertChildrens = async (queryInterface, numeroCuenta, idEmpresa) => {
   const newItems = getChildren(numeroCuenta);
 
   if (!newItems.length)  return [];
+
+  for (const item of newItems) {
+    item.id = uuid.v4();
+    item.id_empresa = idEmpresa;
+  }
 
   const insertChildrens = await queryInterface.bulkInsert('contabilidad_plan_cuenta', newItems, { returning: true });
 
@@ -3456,31 +3464,32 @@ const insertChildrens = async (queryInterface, numeroCuenta) => {
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    const insertParents = await queryInterface.bulkInsert('contabilidad_plan_cuenta', items.filter(item => !item.numero_cuenta_padre), { returning: true });
+    for (const empresa of empresas) {
+      const parents = items.filter(item => !item.numero_cuenta_padre);
 
-    for (const parent of insertParents) {
-      const childrenLevelOne = await insertChildrens(queryInterface, parent.numero_cuenta);
+      for (const parent of parents) {
+        parent.id = uuid.v4();
+        parent.id_empresa = empresa.id;
+      }
 
-      for (const childLevelOne of childrenLevelOne) {
-        const childrenLevelTwo = await insertChildrens(queryInterface, childLevelOne.numero_cuenta);
+      const insertParents = await queryInterface.bulkInsert('contabilidad_plan_cuenta', parents, { returning: true });
 
-        for (const childLevelTwo of childrenLevelTwo) {
-          const childrenLevelTree = await insertChildrens(queryInterface, childLevelTwo.numero_cuenta);
+      for (const parent of insertParents) {
+        const childrenLevelOne = await insertChildrens(queryInterface, parent.numero_cuenta, empresa.id);
 
-          for (const childLevelTree of childrenLevelTree) {
-            const childrenLevelFour = await insertChildrens(queryInterface, childLevelTree.numero_cuenta);
+        for (const childLevelOne of childrenLevelOne) {
+          const childrenLevelTwo = await insertChildrens(queryInterface, childLevelOne.numero_cuenta, empresa.id);
+
+          for (const childLevelTwo of childrenLevelTwo) {
+            const childrenLevelTree = await insertChildrens(queryInterface, childLevelTwo.numero_cuenta, empresa.id);
+
+            for (const childLevelTree of childrenLevelTree) {
+              await insertChildrens(queryInterface, childLevelTree.numero_cuenta, empresa.id);
+            }
           }
         }
       }
     }
-
-    // return queryInterface.bulkInsert('contabilidad_plan_cuenta', items, { returning: true })
-    //   .then(async () => {})
-    //   .catch(error => {
-    //     if (error.message.indexOf('already exists') > -1) return;
-    //     console.error(error);
-    //     // logger.error(error)
-    //   });
   },
 
   down (queryInterface, Sequelize) { }
