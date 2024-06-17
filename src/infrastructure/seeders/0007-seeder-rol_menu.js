@@ -46,7 +46,6 @@ let items = [
   { id: '695f1707-3d05-499b-85c3-ed11226b0438', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '1a797f06-46dc-4eef-ad2e-e191647cd375' },
   { id: 'b99dcead-3173-4ac1-ae5a-5d14e0a47dc1', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '414efdad-7e0e-4c74-afb1-0279ed449a76' },
   { id: 'ee3b3717-5148-4036-9cd6-7a16e7803309', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '143b8bd8-6192-4023-a10b-6d261120dfab' },
-  { id: '220fd7e3-8504-48c6-abd4-5b64f2f72c58', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '28b003ef-4000-4733-9477-acd7059d9725' },
   { id: '72ffc746-bed6-4726-929a-804bca1e9180', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '649ee489-59f3-4d21-89e6-142960b9bb54' },
   { id: '1e34b6d7-73d1-4f4b-b99c-17ae5a5e79c1', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '303a4ca5-fb48-415c-9b31-b28de46cc604' },
   { id: '0e15b791-4fb0-46fb-8686-4709b60f913a', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: 'ddf49a43-103e-45ea-b7c4-fd7587824a50' },
@@ -57,7 +56,26 @@ let items = [
   { id: 'cadfab37-d591-4f08-bcc9-b3596b820417', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: 'a58df237-741b-4042-bdea-588f64982eb7' },
   { id: 'c000a79e-95a7-44ae-ad8c-ad4ebe44f4df', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '83450cfc-ecd6-494a-ad4f-0f7942ac40bd' },
   { id: 'f04f57d9-3de2-4a52-abed-cc0fb2f8a00f', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '52d09590-85dd-495b-ad89-4c812ab5818e' },
-  { id: '43e5044f-e575-4f55-a23d-24a81ad53287', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '263c5365-a2a8-4169-ab00-b841097b144c' }
+  { id: '43e5044f-e575-4f55-a23d-24a81ad53287', id_rol: '75ce2822-a474-4f12-83cd-9d61d5044c21', id_menu: '263c5365-a2a8-4169-ab00-b841097b144c' },
+
+  // MENUS PARA EMPLEADO
+  { id: 'd57c5b50-5995-410c-a7a5-719f31b5fa02', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: 'ccbc9f21-8e26-49c9-abb2-74ac173c98e3' },
+  { id: 'bbab4846-0ca8-426c-829a-f14def32b1c8', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '039a897a-76dd-44c1-b3d7-9682df8f5342' },
+  { id: 'f6584e39-1264-49f6-9f06-f07525bfe19d', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '61d6d53b-ac65-41ac-bc54-3228f548f40a' },
+  { id: '76d76c69-fa65-4b32-b5c3-46377b694443', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: 'ef6b99d0-0834-4d1e-86b0-207111744f98' },
+  { id: '71bf07ae-5479-4a45-995d-b566dad7a1c1', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '6dc27435-bb49-48c8-b98d-ed9024d10ec5' },
+  { id: '791cba68-6aff-4171-af00-86c2b8c135c7', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: 'a0882ff9-0d95-4d60-835d-85624f7a3469' },
+  { id: '8b022b7c-14a2-450a-a72a-7cd21c4ed922', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '649ee489-59f3-4d21-89e6-142960b9bb54' },
+  { id: 'c7ae8d31-8ac3-481a-b228-02e557af5940', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '303a4ca5-fb48-415c-9b31-b28de46cc604' },
+  { id: 'ec8f2352-bdee-4dc7-987b-9505f6b86bae', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: 'ddf49a43-103e-45ea-b7c4-fd7587824a50' },
+  { id: 'ef88c745-5a77-497f-b081-9af53d9edc6c', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '082c0dd5-189d-4861-b457-f4d0c3a925b1' },
+  { id: '42429626-7aa8-40b9-9901-68a9de2695b3', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '78a9a8b5-d52c-44bd-ad26-b52a61323328' },
+  { id: '3adad54c-7ca7-43fa-8903-c323edaf2c30', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '468f135e-f1a0-4613-8df6-b745f0bf70a6' },
+  { id: '5731979d-1b26-465e-87c2-45c36d8db101', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '29513490-8281-4855-8170-b520f0220d71' },
+  { id: '94c51c06-0ea9-4614-9936-727b6b6f8f39', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: 'a58df237-741b-4042-bdea-588f64982eb7' },
+  { id: '0f34aff3-be5f-49de-84f7-0cfc6262e6fd', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '83450cfc-ecd6-494a-ad4f-0f7942ac40bd' },
+  { id: '128bf64c-d1ff-4df4-b8cf-7ddb490763ff', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '52d09590-85dd-495b-ad89-4c812ab5818e' },
+  { id: '97fe7978-444a-44f1-9ab4-ccd6003e3245', id_rol: '885a7b95-65d4-4384-b3c9-126bc5c12567', id_menu: '263c5365-a2a8-4169-ab00-b841097b144c' }
 ];
 
 items = setTimestampsSeeder(items);

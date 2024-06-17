@@ -16,7 +16,7 @@ let items = [
   },
   {
     id         : 'ab0ffdba-aabf-41d3-a989-73ce42d42310',
-    id_usuario : '7171272e-b31b-4c34-9220-9f535c958c5c',
+    id_usuario : '86a519d2-ce79-4a35-a048-769650c9914d',
     id_empresa : 'ee554d08-6dd4-4b2d-882c-3791d9dbef96',
     id_rol     : '75ce2822-a474-4f12-83cd-9d61d5044c21',
     cargo      : 'ADMINISTRADOR',
@@ -24,10 +24,10 @@ let items = [
   },
   {
     id         : 'f144f651-452a-4820-ba50-133565ce7160',
-    id_usuario : '7171272e-b31b-4c34-9220-9f535c958c5c',
-    id_empresa : 'ee5d3f27-107e-4863-9d07-6a086c8ed11a',
+    id_usuario : '70ab4cd6-2c39-4296-909d-e80c8ad56170',
+    id_empresa : 'ee554d08-6dd4-4b2d-882c-3791d9dbef96',
     id_rol     : '885a7b95-65d4-4384-b3c9-126bc5c12567',
-    cargo      : 'CONTADOR',
+    cargo      : 'EMPLEADO',
     estado     : 'ACTIVO'
   }
 ];
